@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Tratamiento.java</file>
-            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Visitas.java</file>
-            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Cliente.java</file>
-            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/VisitaDeAtencion.java</file>
+            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Tratamiento.java</file>
+            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Loro.java</file>
+            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Hamster.java</file>
+            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Perro.java</file>
+            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/VisitaDeAtencion.java</file>
+            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Gato.java</file>
+            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Cliente.java</file>
+            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Mascota.java</file>
         </group>
     </open-files>
 </project-private>

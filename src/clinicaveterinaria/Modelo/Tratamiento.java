@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clinicaveterinaria;
+package clinicaveterinaria.Modelo;
 
 import java.util.Date;
-import java.util.HashMap;
 
 /**
  *
@@ -14,7 +13,7 @@ import java.util.HashMap;
  */
 public class Tratamiento {
     private int id_tratamiento;
-    private String codigo;
+    private String cod_tratamiento;
     private int tipo;
     private String descripcion;
     private double importe;
@@ -22,7 +21,7 @@ public class Tratamiento {
 
     public Tratamiento(int id_tratamiento, String codigo, int tipo, String descripcion, double importe, boolean activo) {
         this.id_tratamiento = id_tratamiento;
-        this.codigo = codigo;
+        this.cod_tratamiento = codigo;
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.importe = importe;
@@ -37,12 +36,12 @@ public class Tratamiento {
         this.id_tratamiento = id_tratamiento;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCod_tratamiento() {
+        return cod_tratamiento;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCod_tratamiento(String codigo) {
+        this.cod_tratamiento = codigo;
     }
 
     public int getTipo() {
@@ -69,7 +68,7 @@ public class Tratamiento {
         this.importe = importe;
     }
 
-    public boolean isActivo() {
+    public boolean getActivo() {
         return activo;
     }
 

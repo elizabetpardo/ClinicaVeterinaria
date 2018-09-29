@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clinicaveterinaria;
+package clinicaveterinaria.Modelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 public class Cliente{
     
     private int id_cliente;
-    private long dni;
+    private int dni;
     private String apellido;
     private String nombre;
     private String direccion;
@@ -25,7 +25,7 @@ public class Cliente{
     List<Mascota> mascotas = new ArrayList<Mascota>();
   
 
-    public Cliente(int id_cliente, long dni, String apellido, String nombre, String direccion, String telefono, String personaAlternativa) {
+    public Cliente(int id_cliente, int dni, String apellido, String nombre, String direccion, String telefono, String personaAlternativa) {
         this.id_cliente = id_cliente;
         this.dni = dni;
         this.apellido = apellido;
@@ -43,11 +43,11 @@ public class Cliente{
         this.id_cliente = id_cliente;
     }
 
-    public long getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(long dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
