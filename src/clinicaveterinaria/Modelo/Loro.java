@@ -13,11 +13,11 @@ import java.util.Date;
  */
 public class Loro extends Mascota{
 
-    public Loro(int id_mascota, Cliente cliente, int codigo, String alias, String sexo, String especie, String raza, String colorPelo, Date fechNac, double pesoPromedio, double pesoActual) {
-        super(id_mascota, cliente, codigo, alias, sexo, especie, raza, colorPelo, fechNac, pesoPromedio, pesoActual);
+    public Loro(int id_mascota, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
+        super(id_mascota, codigo, alias, sexo, especie, raza, fechNac, pesoPromedio, pesoActual);
     }
 
-  
+   
     
      public void PesoPromedio(){};
 }

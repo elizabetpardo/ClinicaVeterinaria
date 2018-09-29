@@ -8,6 +8,7 @@ package clinicaveterinaria.Modelo;
 
 import java.util.Date;
 
+
 /**
  *
  * @author elinote
@@ -20,25 +21,26 @@ public abstract class Mascota {
     private String sexo;
     private String especie;
     private String raza;
-    private String color_pelo;
+    private String colorPelo;
     private Date fecha_nac;
     private double peso_promedio;
     private double peso_actual;
+   
+    
 
-    public Mascota(int id_mascota, Cliente cliente, int codigo, String alias, String sexo, String especie, String raza, String colorPelo, Date fechNac, double pesoPromedio, double pesoActual) {
+    public Mascota(int id_mascota, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
         this.id_mascota = id_mascota;
-        this.cliente = cliente;
         this.cod_mascota = codigo;
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
-        this.color_pelo = colorPelo;
         this.fecha_nac = fechNac;
         this.peso_promedio = pesoPromedio;
         this.peso_actual = pesoActual;
     }
-   
+    
+    
     
     public abstract void PesoPromedio();
 
@@ -50,11 +52,11 @@ public abstract class Mascota {
         this.id_mascota = id;
     }
 
-    public int getCodMascota() {
+    public int getCod_mascota() {
         return cod_mascota;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCod_mascota(int codigo) {
         this.cod_mascota = codigo;
     }
 
@@ -91,18 +93,18 @@ public abstract class Mascota {
     }
 
     public String getColor_pelo() {
-        return color_pelo;
+        return colorPelo;
     }
 
     public void setColor_pelo(String colorPelo) {
-        this.color_pelo = colorPelo;
+        this.colorPelo = colorPelo;
     }
 
     public Date getFecha_nac() {
         return fecha_nac;
     }
 
-    public void setFecha_nac(Date fechNac) {
+    public void setFechNac(Date fechNac) {
         this.fecha_nac = fechNac;
     }
 
