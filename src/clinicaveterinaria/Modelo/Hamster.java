@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clinicaveterinaria;
+package clinicaveterinaria.Modelo;
 
 import java.util.Date;
 
@@ -11,9 +11,9 @@ import java.util.Date;
  *
  * @author elinote
  */
-public class Gato extends Mascota{
+public class Hamster extends Mascota {
 
-    public Gato(int id_mascota, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
+    public Hamster(int id_mascota, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
         super(id_mascota, codigo, alias, sexo, especie, raza, fechNac, pesoPromedio, pesoActual);
     }
     
