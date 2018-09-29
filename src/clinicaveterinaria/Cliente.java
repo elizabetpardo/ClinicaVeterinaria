@@ -21,7 +21,7 @@ public class Cliente{
     private String direccion;
     private String telefono;
     private String personaAlternativa;
-    private List<Mascota> mascotas= new ArrayList<Mascota>();
+  
 
     public Cliente(int id_cliente, long dni, String apellido, String nombre, String direccion, String telefono, String personaAlternativa) {
         this.id_cliente = id_cliente;
@@ -89,26 +89,10 @@ public class Cliente{
         this.personaAlternativa = personaAlternativa;
     }
 
-    public List<Mascota> getMascotas() {
-        return mascotas;
-    }
-
-    public void setMascotas(List<Mascota> mascotas) {
-        this.mascotas = mascotas;
-    }
-
+ 
     
 
   
     
-  public void agregarNuevaMascota(Mascota m){
-      mascotas.add(m);
   
-  }
-  
-  public List<Mascota> MostrarMascotas()
-  {
-    return mascotas;
-  }
-    
 }

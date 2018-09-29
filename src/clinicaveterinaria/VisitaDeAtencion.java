@@ -12,7 +12,7 @@ import java.util.Date;
  * @author elinote
  */
 public class VisitaDeAtencion {
-   private int id_visitaA;
+   private int id_visita;
    private  Mascota mascota;
    private Tratamiento tratamiento;
    private Cliente cliente;
@@ -20,7 +20,7 @@ public class VisitaDeAtencion {
    private String detalle;
 
     public VisitaDeAtencion(int id, Mascota mascota, Tratamiento tratamiento, Cliente cliente, Date fecha, String detalle) {
-        this.id_visitaA = id;
+        this.id_visita = id;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
         this.cliente = cliente;
@@ -29,11 +29,11 @@ public class VisitaDeAtencion {
     }
 
     public int getId_visitaA() {
-        return id_visitaA;
+        return id_visita;
     }
 
     public void setId_visitaA(int id_visitaA) {
-        this.id_visitaA = id_visitaA;
+        this.id_visita = id_visitaA;
     }
 
     public Mascota getMascota() {

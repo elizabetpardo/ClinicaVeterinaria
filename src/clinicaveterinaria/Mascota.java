@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public abstract class Mascota {
     private int id_mascota;
+    private Cliente cliente;
     private int codigo;
     private String alias;
     private String sexo;
@@ -22,6 +23,7 @@ public abstract class Mascota {
     private Date fechNac;
     private double pesoPromedio;
     private double pesoActual;
+    
 
     public Mascota(int id_mascota, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
         this.id_mascota = id_mascota;
