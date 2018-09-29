@@ -20,7 +20,8 @@ public class Cliente{
     private String nombre;
     private String direccion;
     private String telefono;
-    private String personaAlternativa;
+    private String persona_alternativa;
+    List<Mascota> mascotas = new ArrayList<Mascota>();
   
 
     public Cliente(int id_cliente, long dni, String apellido, String nombre, String direccion, String telefono, String personaAlternativa) {
@@ -30,7 +31,7 @@ public class Cliente{
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.personaAlternativa = personaAlternativa;
+        this.persona_alternativa = personaAlternativa;
     }
 
     public int getId_cliente() {
@@ -82,11 +83,11 @@ public class Cliente{
     }
 
     public String getPersonaAlternativa() {
-        return personaAlternativa;
+        return persona_alternativa;
     }
 
     public void setPersonaAlternativa(String personaAlternativa) {
-        this.personaAlternativa = personaAlternativa;
+        this.persona_alternativa = personaAlternativa;
     }
 
  

@@ -15,7 +15,7 @@ public class VisitaDeAtencion {
    private int id_visita;
    private  Mascota mascota;
    private Tratamiento tratamiento;
-   private Cliente cliente;
+
    private Date fecha;
    private String detalle;
 
@@ -23,7 +23,6 @@ public class VisitaDeAtencion {
         this.id_visita = id;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
-        this.cliente = cliente;
         this.fecha = fecha;
         this.detalle = detalle;
     }
@@ -50,14 +49,6 @@ public class VisitaDeAtencion {
 
     public void setTratamiento(Tratamiento tratamiento) {
         this.tratamiento = tratamiento;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public Date getFecha() {

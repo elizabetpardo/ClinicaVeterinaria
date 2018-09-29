@@ -5,7 +5,9 @@
  */
 package clinicaveterinaria;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -23,6 +25,7 @@ public abstract class Mascota {
     private Date fechNac;
     private double pesoPromedio;
     private double pesoActual;
+   
     
 
     public Mascota(int id_mascota, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
