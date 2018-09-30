@@ -38,16 +38,16 @@ public class Principal extends javax.swing.JFrame {
 
         jm_Clinica.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Clinica Veterinaria", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 18), new java.awt.Color(255, 0, 0))); // NOI18N
 
-        jMenu3.setText("File");
+        jMenu3.setText("Archivo");
         jm_Clinica.add(jMenu3);
 
-        jMenu4.setText("Edit");
+        jMenu4.setText("Clientes");
         jm_Clinica.add(jMenu4);
 
-        jMenu1.setText("jMenu1");
+        jMenu1.setText("Mascotas");
         jm_Clinica.add(jMenu1);
 
-        jMenu2.setText("jMenu2");
+        jMenu2.setText("Mascotas");
         jm_Clinica.add(jMenu2);
 
         setJMenuBar(jm_Clinica);

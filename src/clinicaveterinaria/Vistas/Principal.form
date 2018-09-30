@@ -16,22 +16,22 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
+            <Property name="text" type="java.lang.String" value="Archivo"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="text" type="java.lang.String" value="Clientes"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenu1"/>
+            <Property name="text" type="java.lang.String" value="Mascotas"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenu2"/>
+            <Property name="text" type="java.lang.String" value="Mascotas"/>
           </Properties>
         </Menu>
       </SubComponents>
