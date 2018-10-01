@@ -5,9 +5,9 @@
  */
 package clinicaveterinaria.Modelo;
 
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
+
 
 /**
  *
@@ -16,48 +16,48 @@ import java.util.List;
 public abstract class Mascota {
     private int id_mascota;
     private Cliente cliente;
-    private int codigo;
+    private int cod_mascota;
     private String alias;
     private String sexo;
     private String especie;
     private String raza;
     private String colorPelo;
-    private Date fechNac;
-    private double pesoPromedio;
-    private double pesoActual;
+    private Date fecha_nac;
+    private double peso_promedio;
+    private double peso_actual;
    
     
 
     public Mascota(int id_mascota, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
         this.id_mascota = id_mascota;
-        this.codigo = codigo;
+        this.cod_mascota = codigo;
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
-        this.fechNac = fechNac;
-        this.pesoPromedio = pesoPromedio;
-        this.pesoActual = pesoActual;
+        this.fecha_nac = fechNac;
+        this.peso_promedio = pesoPromedio;
+        this.peso_actual = pesoActual;
     }
     
     
     
     public abstract void PesoPromedio();
 
-    public int getId() {
+    public int getId_mascota() {
         return id_mascota;
     }
 
-    public void setId(int id) {
+    public void setId_mascota(int id) {
         this.id_mascota = id;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getCod_mascota() {
+        return cod_mascota;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCod_mascota(int codigo) {
+        this.cod_mascota = codigo;
     }
 
     public String getAlias() {
@@ -92,36 +92,36 @@ public abstract class Mascota {
         this.raza = raza;
     }
 
-    public String getColorPelo() {
+    public String getColor_pelo() {
         return colorPelo;
     }
 
-    public void setColorPelo(String colorPelo) {
+    public void setColor_pelo(String colorPelo) {
         this.colorPelo = colorPelo;
     }
 
-    public Date getFechNac() {
-        return fechNac;
+    public Date getFecha_nac() {
+        return fecha_nac;
     }
 
     public void setFechNac(Date fechNac) {
-        this.fechNac = fechNac;
+        this.fecha_nac = fechNac;
     }
 
-    public double getPesoPromedio() {
-        return pesoPromedio;
+    public double getPeso_promedio() {
+        return peso_promedio;
     }
 
-    public void setPesoPromedio(double pesoPromedio) {
-        this.pesoPromedio = pesoPromedio;
+    public void setPeso_promedio(double pesoPromedio) {
+        this.peso_promedio = pesoPromedio;
     }
 
-    public double getPesoActual() {
-        return pesoActual;
+    public double getPeso_actual() {
+        return peso_actual;
     }
 
-    public void setPesoActual(double pesoActual) {
-        this.pesoActual = pesoActual;
+    public void setPeso_actual(double pesoActual) {
+        this.peso_actual = pesoActual;
     }
     
     

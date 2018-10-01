@@ -15,7 +15,6 @@ public class VisitaDeAtencion {
    private int id_visita;
    private  Mascota mascota;
    private Tratamiento tratamiento;
-
    private Date fecha;
    private String detalle;
 
@@ -27,12 +26,12 @@ public class VisitaDeAtencion {
         this.detalle = detalle;
     }
 
-    public int getId_visitaA() {
+    public int getId_visita() {
         return id_visita;
     }
 
-    public void setId_visitaA(int id_visitaA) {
-        this.id_visita = id_visitaA;
+    public void setId_visita(int id_visita) {
+        this.id_visita = id_visita;
     }
 
     public Mascota getMascota() {
@@ -54,7 +53,7 @@ public class VisitaDeAtencion {
     public Date getFecha() {
         return fecha;
     }
-
+    
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }

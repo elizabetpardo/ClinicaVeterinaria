@@ -16,6 +16,8 @@ public class Hamster extends Mascota {
     public Hamster(int id_mascota, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
         super(id_mascota, codigo, alias, sexo, especie, raza, fechNac, pesoPromedio, pesoActual);
     }
+
+    
     
      public void PesoPromedio(){};
 }

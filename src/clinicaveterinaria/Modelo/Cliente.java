@@ -16,24 +16,24 @@ import java.util.List;
 public class Cliente{
     
     private int id_cliente;
-    private long dni;
+    private int dni;
     private String apellido;
     private String nombre;
     private String direccion;
     private String telefono;
     private String persona_alternativa;
     List<Mascota> mascotas = new ArrayList<Mascota>();
-  
-        //probando
-    public Cliente(int id_cliente, long dni, String apellido, String nombre, String direccion, String telefono, String personaAlternativa) {
+
+    public Cliente(int id_cliente, int dni, String apellido, String nombre, String direccion, String telefono, String persona_alternativa) {
         this.id_cliente = id_cliente;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.persona_alternativa = personaAlternativa;
+        this.persona_alternativa = persona_alternativa;
     }
+
 
     public int getId_cliente() {
         return id_cliente;
@@ -43,11 +43,11 @@ public class Cliente{
         this.id_cliente = id_cliente;
     }
 
-    public long getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(long dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
@@ -83,11 +83,11 @@ public class Cliente{
         this.telefono = telefono;
     }
 
-    public String getPersonaAlternativa() {
+    public String getPersona_alternativa() {
         return persona_alternativa;
     }
 
-    public void setPersonaAlternativa(String personaAlternativa) {
+    public void setPersona_alternativa(String personaAlternativa) {
         this.persona_alternativa = personaAlternativa;
     }
 
