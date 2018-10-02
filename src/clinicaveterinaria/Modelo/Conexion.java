@@ -9,11 +9,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 /**
  *
- * @author usuario
+ * @author alejo
  */
-class Conexion {
+public class Conexion {
     private String url;
     private String usuario;
     private String password;
@@ -41,6 +42,3 @@ class Conexion {
     }
     
 }
-
-    
-

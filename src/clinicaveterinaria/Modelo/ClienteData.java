@@ -23,7 +23,7 @@ public class ClienteData {
     public ClienteData(Conexion conexion) {
         try {
             connection = conexion.getConexion();
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
             System.out.println("Error al abrir al obtener la conexion");
         }
     }
