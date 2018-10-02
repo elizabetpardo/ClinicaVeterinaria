@@ -6,7 +6,12 @@
 package clinicaveterinaria.Modelo;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,23 +19,6 @@ import java.sql.SQLException;
  */
 public class ClienteData {
     private Connection connection = null;
-    private int id_cliente;
-    private int dni;
-    private String apellido;
-    private String nombre;
-    private String direccion;
-    private String telefono;
-    private String persona_alternativa;
-
-    public ClienteData(int id_cliente, int dni, String apellido, String nombre, String direccion, String telefono, String persona_alternativa) {
-        this.id_cliente = id_cliente;
-        this.dni = dni;
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.persona_alternativa = persona_alternativa;
-    }
 
     public ClienteData(Conexion conexion) {
         try {
@@ -40,63 +28,65 @@ public class ClienteData {
         }
     }
     
-    public int getId_cliente() {
-        int id_cliente = 0;
-        return id_cliente;
-    }
+    
+    public void guardarCliente(Cliente cliente){
+        try {
+            
+            String sql = "INSERT INTO cliente (dni, apellido, nombre, direccion, telefono, persona alternativa) VALUES ( ? , ? , ? , ? , ? , ?  );";
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
-    }
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, cliente.getDni());
+            statement.setString(2, cliente.getApellido());
+            statement.setString(3, cliente.getNombre());
+            statement.setString(4, cliente.getDireccion());
+            statement.setString(5, cliente.getTelefono());
+            statement.setString(6, cliente.getPersona_alternativa());
+            statement.executeUpdate();
+            ResultSet rs = statement.getGeneratedKeys();
+            
 
-    public int getDni() {
-        int dni = 0;
-        return dni;
+            if (rs.next()) {
+                cliente.setId_cliente(rs.getInt(1));
+            } else {
+                System.out.println("No se pudo obtener el id luego de insertar un ciente");
+            }
+            statement.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar un cliente: " + ex.getMessage());
+        }
     }
+    
+    public List<Cliente> obtenerClientes(){
+        List<Cliente> clientes = new ArrayList<>();
+            
 
-    public void setDni(int dni) {
-        this.dni = dni;
+        try {
+            String sql = "SELECT * FROM cliente;";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                ResultSet resultSet = statement.executeQuery();
+                Cliente cliente;
+                while(resultSet.next()){
+                    cliente = new Cliente();
+                    
+                    cliente.setId_cliente(resultSet.getInt("id_cliente"));
+                    cliente.setDni(resultSet.getInt("dni"));
+                    cliente.setApellido(resultSet.getString("apellido"));
+                    cliente.setNombre(resultSet.getString("nombre"));
+                    cliente.setDireccion(resultSet.getString("direccion"));
+                    cliente.setTelefono(resultSet.getString("telefono"));
+                    cliente.setPersona_alternativa(resultSet.getString("persona alternativa"));
+                    
+                    clientes.add(cliente);
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener los cliente: " + ex.getMessage());
+        }
+        
+        
+        return clientes;
     }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getPersona_alternativa() {
-        return persona_alternativa;
-    }
-
-    public void setPersona_alternativa(String personaAlternativa) {
-        this.persona_alternativa = personaAlternativa;
-    }
-
+    
     
 }
