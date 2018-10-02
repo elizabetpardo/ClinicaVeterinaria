@@ -34,7 +34,9 @@ public class Principal extends javax.swing.JFrame {
         jm_P_Clientes = new javax.swing.JMenu();
         jmi_P_RegistrarCliente = new javax.swing.JMenuItem();
         jm_P_Mascotas = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jm_P_Tratamientos = new javax.swing.JMenu();
+        jmi_Principal_ListadoMascota = new javax.swing.JMenuItem();
         jm_P_Visitas = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,9 +82,22 @@ public class Principal extends javax.swing.JFrame {
         jm_Clinica.add(jm_P_Clientes);
 
         jm_P_Mascotas.setText("Mascotas");
+
+        jMenuItem2.setText("jMenuItem2");
+        jm_P_Mascotas.add(jMenuItem2);
+
         jm_Clinica.add(jm_P_Mascotas);
 
         jm_P_Tratamientos.setText("Tratamientos");
+
+        jmi_Principal_ListadoMascota.setText("Listado de mascotas");
+        jmi_Principal_ListadoMascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_Principal_ListadoMascotaActionPerformed(evt);
+            }
+        });
+        jm_P_Tratamientos.add(jmi_Principal_ListadoMascota);
+
         jm_Clinica.add(jm_P_Tratamientos);
 
         jm_P_Visitas.setText("visitas");
@@ -116,6 +131,15 @@ vm.setVisible(true);
 escritorio.add(vm);
 escritorio.moveToFront(vm);        // TODO add your handling code here:
     }//GEN-LAST:event_jmi_P_RegistrarClienteActionPerformed
+
+    private void jmi_Principal_ListadoMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_Principal_ListadoMascotaActionPerformed
+escritorio.removeAll();
+escritorio.repaint();
+ListadoMascotaxTratamiento vm= new ListadoMascotaxTratamiento();
+vm.setVisible(true);
+escritorio.add(vm);
+escritorio.moveToFront(vm);    // TODO add your handling code here:
+    }//GEN-LAST:event_jmi_Principal_ListadoMascotaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,6 +179,7 @@ escritorio.moveToFront(vm);        // TODO add your handling code here:
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar jm_Clinica;
     private javax.swing.JMenu jm_P_Archivo;
     private javax.swing.JMenu jm_P_Clientes;
@@ -162,5 +187,6 @@ escritorio.moveToFront(vm);        // TODO add your handling code here:
     private javax.swing.JMenu jm_P_Tratamientos;
     private javax.swing.JMenu jm_P_Visitas;
     private javax.swing.JMenuItem jmi_P_RegistrarCliente;
+    private javax.swing.JMenuItem jmi_Principal_ListadoMascota;
     // End of variables declaration//GEN-END:variables
 }

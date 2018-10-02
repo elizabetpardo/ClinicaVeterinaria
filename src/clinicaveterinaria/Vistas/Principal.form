@@ -48,11 +48,28 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Mascotas"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jm_P_Tratamientos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tratamientos"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmi_Principal_ListadoMascota">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listado de mascotas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_Principal_ListadoMascotaActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jm_P_Visitas">
           <Properties>
