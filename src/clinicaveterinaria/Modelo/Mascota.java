@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * @author elinote
  */
-public abstract class Mascota {
+public class Mascota {
     private int id_mascota;
     private Cliente cliente;
     private int cod_mascota;
@@ -25,11 +25,15 @@ public abstract class Mascota {
     private Date fecha_nac;
     private double peso_promedio;
     private double peso_actual;
-   
     
 
-    public Mascota(int id_mascota, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
+    public Mascota() {
+        id_mascota=-1;
+    }
+   
+    public Mascota(int id_mascota, Cliente cliente, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
         this.id_mascota = id_mascota;
+        this.cliente = cliente;
         this.cod_mascota = codigo;
         this.alias = alias;
         this.sexo = sexo;
@@ -42,14 +46,20 @@ public abstract class Mascota {
     
     
     
-    public abstract void PesoPromedio();
-
     public int getId_mascota() {
         return id_mascota;
     }
 
     public void setId_mascota(int id) {
         this.id_mascota = id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public int getCod_mascota() {
@@ -124,5 +134,7 @@ public abstract class Mascota {
         this.peso_actual = pesoActual;
     }
     
+    public void PesoPromedio(){
     
+    }
 }

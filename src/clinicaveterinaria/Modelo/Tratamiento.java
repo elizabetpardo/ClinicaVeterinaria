@@ -19,6 +19,10 @@ public class Tratamiento {
     private double importe;
     private boolean activo;
 
+    public Tratamiento() {
+        id_tratamiento=-1;
+    }
+
     public Tratamiento(int id_tratamiento, String codigo, int tipo, String descripcion, double importe, boolean activo) {
         this.id_tratamiento = id_tratamiento;
         this.cod_tratamiento = codigo;
