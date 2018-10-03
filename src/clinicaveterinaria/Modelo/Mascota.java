@@ -134,7 +134,11 @@ public class Mascota {
         this.peso_actual = pesoActual;
     }
     
-    public void PesoPromedio(){
+    /*public void PesoPromedio(Mascota mascota){ //este metodo debe ir en VisitaDeAtencion
+        if(mascota.getPeso_promedio() == 0)
+            mascota.setPeso_promedio(mascota.getPeso_actual());
+        else
+            mascota.setPeso_promedio((mascota.getPeso_actual()+ mascota.getPeso_promedio())/2);
+    } */
     
-    }
 }

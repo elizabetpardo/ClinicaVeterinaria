@@ -167,8 +167,8 @@ public class MascotaData {
                 mascota = new Mascota();
                 mascota.setId_mascota(resultSet.getInt("id_mascota"));
                 
-            //    Cliente x=buscarCliente(resultSet.getInt("id_cliente"));   
-            //    mascota.setCliente(x);
+                Cliente x=buscarCliente(resultSet.getInt("id_cliente"));   
+                mascota.setCliente(x);
                 
                 mascota.setCod_mascota(resultSet.getInt("cod_mascota"));
                 mascota.setAlias(resultSet.getString("alias"));
@@ -195,12 +195,11 @@ public class MascotaData {
         return mascota;
     }
     
-  /*  public Cliente buscarCliente(int id){
+    public Cliente buscarCliente(int id){
     
         ClienteData cd=new ClienteData(conexion);
         
-        return cd.buscarCliente(id); //falta metodo "buscarCliente" en ClienteData
-        
-    } */
+        return cd.buscarCliente(id);  
+    }    
 }
 
