@@ -32,7 +32,7 @@ public class ClienteData {
     public void guardarCliente(Cliente cliente){
         try {
             
-            String sql = "INSERT INTO cliente (dni, apellido, nombre, direccion, telefono, persona alternativa) VALUES ( ? , ? , ? , ? , ? , ?  );";
+            String sql = "INSERT INTO cliente (dni, apellido, nombre, direccion, telefono, persona_alternativa) VALUES ( ? , ? , ? , ? , ? , ?  );";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, cliente.getDni());
@@ -75,7 +75,7 @@ public class ClienteData {
                     cliente.setNombre(resultSet.getString("nombre"));
                     cliente.setDireccion(resultSet.getString("direccion"));
                     cliente.setTelefono(resultSet.getString("telefono"));
-                    cliente.setPersona_alternativa(resultSet.getString("persona alternativa"));
+                    cliente.setPersona_alternativa(resultSet.getString("persona_alternativa"));
                     
                     clientes.add(cliente);
                 }
@@ -90,7 +90,7 @@ public class ClienteData {
     public void borrarCliente(int id){
     try {
             
-            String sql = "DELETE FROM cliente WHERE id =?;";
+            String sql = "DELETE FROM cliente WHERE id_cliente =?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, id);
@@ -112,7 +112,7 @@ public class ClienteData {
     
         try {
             
-            String sql = "UPDATE cliente SET nombre = ?, dni = ?, apellido = ?, nombre = ?, direccion = ?, telefono = ?, persona alternativa = ? WHERE id = ?;";
+            String sql = "UPDATE cliente SET dni = ?, apellido = ?, nombre = ?, direccion = ?, telefono = ?, persona_alternativa = ? WHERE id_cliente = ?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
@@ -128,7 +128,7 @@ public class ClienteData {
             statement.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+            System.out.println("Error al insertar un cliente: " + ex.getMessage());
         }
     
     }
@@ -137,7 +137,7 @@ public class ClienteData {
     Cliente cliente=null;
     try {
             
-            String sql = "SELECT * FROM cliente WHERE id =?;";
+            String sql = "SELECT * FROM cliente WHERE id_cliente =?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, id);
@@ -154,7 +154,7 @@ public class ClienteData {
                     cliente.setNombre(resultSet.getString("nombre"));
                     cliente.setDireccion(resultSet.getString("direccion"));
                     cliente.setTelefono(resultSet.getString("telefono"));
-                    cliente.setPersona_alternativa(resultSet.getString("persona alternativa"));
+                    cliente.setPersona_alternativa(resultSet.getString("persona_alternativa"));
                        
                 
             }      

@@ -5,14 +5,14 @@
  */
 package clinicaveterinaria.Modelo;
 
-import java.util.Date;
+
 
 /**
  *
  * @author elinote
  */
 public class Tratamiento {
-    private int id_tratamiento;
+    private int id_tratamiento=-1;
     private String cod_tratamiento;
     private int tipo;
     private String descripcion;
@@ -20,7 +20,7 @@ public class Tratamiento {
     private boolean activo;
 
     public Tratamiento() {
-        id_tratamiento=-1;
+       
     }
 
     public Tratamiento(int id_tratamiento, String codigo, int tipo, String descripcion, double importe, boolean activo) {

@@ -6,6 +6,7 @@
 package clinicaveterinaria.Modelo;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -14,7 +15,7 @@ import java.util.Date;
  * @author elinote
  */
 public class Mascota {
-    private int id_mascota;
+    private int id_mascota=-1;
     private Cliente cliente;
     private int cod_mascota;
     private String alias;
@@ -22,16 +23,16 @@ public class Mascota {
     private String especie;
     private String raza;
     private String colorPelo;
-    private Date fecha_nac;
+    private LocalDate fecha_nac;
     private double peso_promedio;
     private double peso_actual;
     
 
     public Mascota() {
-        id_mascota=-1;
+      
     }
    
-    public Mascota(int id_mascota, Cliente cliente, int codigo, String alias, String sexo, String especie, String raza, Date fechNac, double pesoPromedio, double pesoActual) {
+    public Mascota(int id_mascota, Cliente cliente, int codigo, String alias, String sexo, String especie, String raza, LocalDate fechNac, double pesoPromedio, double pesoActual) {
         this.id_mascota = id_mascota;
         this.cliente = cliente;
         this.cod_mascota = codigo;
@@ -110,11 +111,11 @@ public class Mascota {
         this.colorPelo = colorPelo;
     }
 
-    public Date getFecha_nac() {
+    public LocalDate getFecha_nac() {
         return fecha_nac;
     }
 
-    public void setFechNac(Date fechNac) {
+    public void setFechNac(LocalDate fechNac) {
         this.fecha_nac = fechNac;
     }
 

@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class MascotaData {
     public void guardarMascota(Mascota mascota){
         try {
             
-            String sql = "INSERT INTO mascota (id_cliente, cod_mascota, alias, sexo, especie, raza, colorPelo, fecha_nac, peso_promedio, peso_actual) VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? );";
+            String sql = "INSERT INTO mascota (id_cliente, cod_mascota, alias, sexo, especie, raza, color_pelo, fecha_nac, peso_promedio, peso_actual) VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? );";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, mascota.getCliente().getId_cliente());
@@ -45,9 +46,9 @@ public class MascotaData {
             statement.setString(5, mascota.getEspecie());
             statement.setString(6, mascota.getRaza());
             statement.setString(7, mascota.getColor_pelo());
-            statement.setDate(8, (Date) mascota.getFecha_nac());
-            statement.setInt(9, (int)mascota.getPeso_promedio());
-            statement.setInt(10, (int)mascota.getPeso_actual());
+            statement.setDate(8,  Date.valueOf( mascota.getFecha_nac()));
+            statement.setDouble(9, mascota.getPeso_promedio());
+            statement.setDouble(10,mascota.getPeso_actual());
             
             statement.executeUpdate();
             
@@ -78,8 +79,8 @@ public class MascotaData {
                 mascota = new Mascota(); 
                 mascota.setId_mascota(resultSet.getInt("id_mascota"));
                 
-              //  Cliente x=buscarCliente(resultSet.getInt("id_cliente"));   
-              //  mascota.setCliente(x);
+               Cliente x=buscarCliente(resultSet.getInt("id_cliente"));   
+               mascota.setCliente(x);
                 
                 mascota.setCod_mascota(resultSet.getInt("cod_mascota"));
                 mascota.setAlias(resultSet.getString("alias"));
@@ -87,7 +88,7 @@ public class MascotaData {
                 mascota.setEspecie(resultSet.getString("especie"));
                 mascota.setRaza(resultSet.getString("raza"));
                 mascota.setColor_pelo(resultSet.getString("colorPelo"));
-                mascota.setFechNac(resultSet.getDate("fecha_nac"));
+                mascota.setFechNac(resultSet.getDate("fecha_nac").toLocalDate());
                 mascota.setPeso_promedio(resultSet.getInt("peso_promedio"));
                 mascota.setPeso_actual(resultSet.getInt("peso_actual"));
                 
@@ -95,7 +96,7 @@ public class MascotaData {
             }      
             statement.close();
         } catch (SQLException ex) {
-            System.out.println("Error al obtener los mascotas: " + ex.getMessage());
+            System.out.println("Error al obtener las mascotas: " + ex.getMessage());
         }
         
         
@@ -105,7 +106,7 @@ public class MascotaData {
     public void borrarMascota(int id){
     try {
             
-            String sql = "DELETE FROM mascota WHERE id =?;";
+            String sql = "DELETE FROM mascota WHERE id_mascota =?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, id);
@@ -135,7 +136,7 @@ public class MascotaData {
             statement.setString(5, mascota.getEspecie());
             statement.setString(6, mascota.getRaza());
             statement.setString(7, mascota.getColor_pelo());
-            statement.setDate(8, (Date) mascota.getFecha_nac());
+            statement.setDate(8, Date.valueOf(mascota.getFecha_nac()));
             statement.setInt(9, (int)mascota.getPeso_promedio());
             statement.setInt(10, (int)mascota.getPeso_actual());
             statement.setInt(11, mascota.getId_mascota());
@@ -155,7 +156,7 @@ public class MascotaData {
     Mascota mascota=null;
     try {
             
-            String sql = "SELECT * FROM mascota WHERE id =?;";
+            String sql = "SELECT * FROM mascota WHERE id_mascota =?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, id);
@@ -176,7 +177,7 @@ public class MascotaData {
                 mascota.setEspecie(resultSet.getString("especie"));
                 mascota.setRaza(resultSet.getString("raza"));
                 mascota.setColor_pelo(resultSet.getString("colorPelo"));
-                mascota.setFechNac(resultSet.getDate("fecha_nac"));
+                mascota.setFechNac(resultSet.getDate("fecha_nac").toLocalDate());
                 mascota.setPeso_promedio(resultSet.getInt("peso_promedio"));
                 mascota.setPeso_actual(resultSet.getInt("peso_actual"));
 

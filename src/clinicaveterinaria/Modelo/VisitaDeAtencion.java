@@ -5,6 +5,7 @@
  */
 package clinicaveterinaria.Modelo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -12,13 +13,14 @@ import java.util.Date;
  * @author elinote
  */
 public class VisitaDeAtencion {
-   private int id_visita;
+   private int id_visita=-1;
    private  Mascota mascota;
    private Tratamiento tratamiento;
-   private Date fecha;
+   private LocalDate fecha;
    private String detalle;
 
-    public VisitaDeAtencion(int id, Mascota mascota, Tratamiento tratamiento, Cliente cliente, Date fecha, String detalle) {
+    public VisitaDeAtencion(){}
+    public VisitaDeAtencion(int id, Mascota mascota, Tratamiento tratamiento, Cliente cliente, LocalDate fecha, String detalle) {
         this.id_visita = id;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
@@ -50,11 +52,11 @@ public class VisitaDeAtencion {
         this.tratamiento = tratamiento;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
     
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

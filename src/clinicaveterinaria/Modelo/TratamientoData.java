@@ -41,7 +41,7 @@ public class TratamientoData {
             statement.setString(1, tratamiento.getCod_tratamiento());
             statement.setInt(2, tratamiento.getTipo());
             statement.setString(3, tratamiento.getDescripcion());
-            statement.setInt(4, (int) tratamiento.getImporte());
+            statement.setDouble(4, tratamiento.getImporte());
             statement.setBoolean(5, tratamiento.getActivo());
             
             
@@ -93,7 +93,7 @@ public class TratamientoData {
     public void borrarTratamiento(int id){
     try {
             
-            String sql = "DELETE FROM tratamiento WHERE id =?;";
+            String sql = "DELETE FROM tratamiento WHERE id_tratamiento =?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, id);
@@ -138,7 +138,7 @@ public class TratamientoData {
     Tratamiento tratamiento=null;
     try {
             
-            String sql = "SELECT * FROM tratamiento WHERE id =?;";
+            String sql = "SELECT * FROM tratamiento WHERE id_tratamiento =?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, id);

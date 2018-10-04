@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Cliente{
     
-    private int id_cliente;
+    private int id_cliente=-1;
     private int dni;
     private String apellido;
     private String nombre;
