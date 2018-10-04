@@ -22,7 +22,7 @@ public class Mascota {
     private String sexo;
     private String especie;
     private String raza;
-    private String colorPelo;
+    private String color_pelo;
     private LocalDate fecha_nac;
     private double peso_promedio;
     private double peso_actual;
@@ -32,7 +32,7 @@ public class Mascota {
       
     }
    
-    public Mascota(int id_mascota, Cliente cliente, int codigo, String alias, String sexo, String especie, String raza, LocalDate fechNac, double pesoPromedio, double pesoActual) {
+    public Mascota(int id_mascota, Cliente cliente, int codigo, String alias, String sexo, String especie, String raza,String colorpelo, LocalDate fechNac, double pesoPromedio, double pesoActual) {
         this.id_mascota = id_mascota;
         this.cliente = cliente;
         this.cod_mascota = codigo;
@@ -40,6 +40,7 @@ public class Mascota {
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
+        this.color_pelo=colorpelo;
         this.fecha_nac = fechNac;
         this.peso_promedio = pesoPromedio;
         this.peso_actual = pesoActual;
@@ -104,11 +105,11 @@ public class Mascota {
     }
 
     public String getColor_pelo() {
-        return colorPelo;
+        return color_pelo;
     }
 
     public void setColor_pelo(String colorPelo) {
-        this.colorPelo = colorPelo;
+        this.color_pelo = colorPelo;
     }
 
     public LocalDate getFecha_nac() {
