@@ -3,19 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clinicaveterinaria.Vistas;
+package clinicaveterinaria.vistas;
+
+import javax.swing.JFrame;
 
 /**
  *
  * @author Usuario
  */
-public class Principal extends javax.swing.JFrame {
+public class VistaPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form Principal
      */
-    public Principal() {
+    public VistaPrincipal() {
         initComponents();
+         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+   
     }
 
     /**
@@ -34,10 +38,12 @@ public class Principal extends javax.swing.JFrame {
         jm_P_Clientes = new javax.swing.JMenu();
         jmi_P_RegistrarCliente = new javax.swing.JMenuItem();
         jm_P_Mascotas = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmi_formuarioMascota = new javax.swing.JMenuItem();
         jm_P_Tratamientos = new javax.swing.JMenu();
         jmi_Principal_ListadoMascota = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jm_P_Visitas = new javax.swing.JMenu();
+        jmi_visitasMascota = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -71,7 +77,7 @@ public class Principal extends javax.swing.JFrame {
 
         jm_P_Clientes.setText("Clientes");
 
-        jmi_P_RegistrarCliente.setText("Registrar Cliente");
+        jmi_P_RegistrarCliente.setText("Formulario de cliente");
         jmi_P_RegistrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmi_P_RegistrarClienteActionPerformed(evt);
@@ -83,8 +89,13 @@ public class Principal extends javax.swing.JFrame {
 
         jm_P_Mascotas.setText("Mascotas");
 
-        jMenuItem2.setText("jMenuItem2");
-        jm_P_Mascotas.add(jMenuItem2);
+        jmi_formuarioMascota.setText("Formulario de mascota");
+        jmi_formuarioMascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_formuarioMascotaActionPerformed(evt);
+            }
+        });
+        jm_P_Mascotas.add(jmi_formuarioMascota);
 
         jm_Clinica.add(jm_P_Mascotas);
 
@@ -98,9 +109,26 @@ public class Principal extends javax.swing.JFrame {
         });
         jm_P_Tratamientos.add(jmi_Principal_ListadoMascota);
 
+        jMenuItem2.setText("Formulario de tratamiento");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jm_P_Tratamientos.add(jMenuItem2);
+
         jm_Clinica.add(jm_P_Tratamientos);
 
-        jm_P_Visitas.setText("visitas");
+        jm_P_Visitas.setText("Visitas");
+
+        jmi_visitasMascota.setText("Visitas por Mascota");
+        jmi_visitasMascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_visitasMascotaActionPerformed(evt);
+            }
+        });
+        jm_P_Visitas.add(jmi_visitasMascota);
+
         jm_Clinica.add(jm_P_Visitas);
 
         setJMenuBar(jm_Clinica);
@@ -126,7 +154,7 @@ System.exit(0);           // TODO add your handling code here:
     private void jmi_P_RegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_P_RegistrarClienteActionPerformed
 escritorio.removeAll();
 escritorio.repaint();
-Cliente vm= new Cliente();
+VistaCliente vm= new VistaCliente();
 vm.setVisible(true);
 escritorio.add(vm);
 escritorio.moveToFront(vm);        // TODO add your handling code here:
@@ -140,6 +168,33 @@ vm.setVisible(true);
 escritorio.add(vm);
 escritorio.moveToFront(vm);    // TODO add your handling code here:
     }//GEN-LAST:event_jmi_Principal_ListadoMascotaActionPerformed
+
+    private void jmi_formuarioMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_formuarioMascotaActionPerformed
+      escritorio.removeAll();
+      escritorio.repaint();
+      VistaMascota vm= new VistaMascota();
+      vm.setVisible(true);
+      escritorio.add(vm);
+      escritorio.moveToFront(vm); 
+    }//GEN-LAST:event_jmi_formuarioMascotaActionPerformed
+
+    private void jmi_visitasMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_visitasMascotaActionPerformed
+      escritorio.removeAll();
+      escritorio.repaint();
+      VistaVisitas vm= new VistaVisitas();
+      vm.setVisible(true);
+      escritorio.add(vm);
+      escritorio.moveToFront(vm);
+    }//GEN-LAST:event_jmi_visitasMascotaActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+      escritorio.removeAll();
+      escritorio.repaint();
+      VistaTratamiento vm= new VistaTratamiento();
+      vm.setVisible(true);
+      escritorio.add(vm);
+      escritorio.moveToFront(vm);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,20 +213,21 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                new VistaPrincipal().setVisible(true);
             }
         });
     }
@@ -188,5 +244,7 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
     private javax.swing.JMenu jm_P_Visitas;
     private javax.swing.JMenuItem jmi_P_RegistrarCliente;
     private javax.swing.JMenuItem jmi_Principal_ListadoMascota;
+    private javax.swing.JMenuItem jmi_formuarioMascota;
+    private javax.swing.JMenuItem jmi_visitasMascota;
     // End of variables declaration//GEN-END:variables
 }

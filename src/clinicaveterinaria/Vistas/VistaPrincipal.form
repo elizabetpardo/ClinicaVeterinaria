@@ -36,7 +36,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmi_P_RegistrarCliente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registrar Cliente"/>
+                <Property name="text" type="java.lang.String" value="Formulario de cliente"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_P_RegistrarClienteActionPerformed"/>
@@ -49,10 +49,13 @@
             <Property name="text" type="java.lang.String" value="Mascotas"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="jmi_formuarioMascota">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+                <Property name="text" type="java.lang.String" value="Formulario de mascota"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_formuarioMascotaActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -69,12 +72,30 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_Principal_ListadoMascotaActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Formulario de tratamiento"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jm_P_Visitas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="visitas"/>
+            <Property name="text" type="java.lang.String" value="Visitas"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmi_visitasMascota">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Visitas por Mascota"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_visitasMascotaActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

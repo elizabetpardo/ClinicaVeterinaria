@@ -24,8 +24,7 @@ public class Cliente{
     private String persona_alternativa;
     List<Mascota> mascotas = new ArrayList<>();
 
-    public Cliente(int id_cliente, int dni, String apellido, String nombre, String direccion, String telefono, String persona_alternativa) {
-        this.id_cliente = id_cliente;
+    public Cliente(int dni, String apellido, String nombre, String direccion, String telefono, String persona_alternativa) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;

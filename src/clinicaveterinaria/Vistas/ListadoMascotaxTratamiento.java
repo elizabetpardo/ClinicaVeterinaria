@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clinicaveterinaria.Vistas;
+package clinicaveterinaria.vistas;
 
 /**
  *
@@ -33,11 +33,18 @@ public class ListadoMascotaxTratamiento extends javax.swing.JInternalFrame {
         jsp_LMXT = new javax.swing.JScrollPane();
         t_LMXT_tabla = new javax.swing.JTable();
 
-        jl_LMXT.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jl_LMXT.setText("Listado De Mascota por Tratamiento");
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
+        jl_LMXT.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jl_LMXT.setText("LISTADO DE MASCOTA POR TRATAMIENTO");
 
         jl_LMXT_Tratamiento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jl_LMXT_Tratamiento.setText("Tratamiento");
+        jl_LMXT_Tratamiento.setText("TRATAMIENTOS");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VACUNACIÓN", "ENFERMEDAD", "CURACIONES", "BAÑO Y CORTE DE PELO", "CASTRACIÓN", "OTROS", " " }));
 
         t_LMXT_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -57,30 +64,35 @@ public class ListadoMascotaxTratamiento extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jl_LMXT))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jl_LMXT_Tratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
-            .addComponent(jsp_LMXT, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jl_LMXT, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jl_LMXT_Tratamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(44, 44, 44)
+                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jsp_LMXT)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jl_LMXT, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_LMXT_Tratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jsp_LMXT, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jsp_LMXT, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
+
+        jl_LMXT_Tratamiento.getAccessibleContext().setAccessibleName("TRATAMIENTOS");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
