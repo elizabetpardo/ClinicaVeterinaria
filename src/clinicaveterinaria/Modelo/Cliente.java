@@ -23,6 +23,17 @@ public class Cliente{
     private String telefono;
     private String persona_alternativa;
     List<Mascota> mascotas = new ArrayList<>();
+    
+    
+     public Cliente(int id,int dni, String apellido, String nombre, String direccion, String telefono, String persona_alternativa) {
+        this.id_cliente=id;
+        this.dni = dni;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.persona_alternativa = persona_alternativa;
+    }
 
     public Cliente(int dni, String apellido, String nombre, String direccion, String telefono, String persona_alternativa) {
         this.dni = dni;

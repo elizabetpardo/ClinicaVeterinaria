@@ -39,11 +39,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jmi_P_RegistrarCliente = new javax.swing.JMenuItem();
         jm_P_Mascotas = new javax.swing.JMenu();
         jmi_formuarioMascota = new javax.swing.JMenuItem();
+        jmi_mascotasXcliente = new javax.swing.JMenuItem();
         jm_P_Tratamientos = new javax.swing.JMenu();
         jmi_Principal_ListadoMascota = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jm_P_Visitas = new javax.swing.JMenu();
         jmi_visitasMascota = new javax.swing.JMenuItem();
+        jmi_formularioVisitas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -97,6 +99,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jm_P_Mascotas.add(jmi_formuarioMascota);
 
+        jmi_mascotasXcliente.setText("Mascotas por cliente");
+        jmi_mascotasXcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_mascotasXclienteActionPerformed(evt);
+            }
+        });
+        jm_P_Mascotas.add(jmi_mascotasXcliente);
+
         jm_Clinica.add(jm_P_Mascotas);
 
         jm_P_Tratamientos.setText("Tratamientos");
@@ -119,7 +129,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jm_Clinica.add(jm_P_Tratamientos);
 
-        jm_P_Visitas.setText("Visitas");
+        jm_P_Visitas.setText(" Visitas de Atención");
 
         jmi_visitasMascota.setText("Visitas por Mascota");
         jmi_visitasMascota.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +138,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
         jm_P_Visitas.add(jmi_visitasMascota);
+
+        jmi_formularioVisitas.setText("Formulario de Visitas de atención");
+        jmi_formularioVisitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_formularioVisitasActionPerformed(evt);
+            }
+        });
+        jm_P_Visitas.add(jmi_formularioVisitas);
 
         jm_Clinica.add(jm_P_Visitas);
 
@@ -196,6 +214,24 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
       escritorio.moveToFront(vm);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jmi_mascotasXclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mascotasXclienteActionPerformed
+      escritorio.removeAll();
+      escritorio.repaint();
+      VistaMascotasxCliente vm= new VistaMascotasxCliente();
+      vm.setVisible(true);
+      escritorio.add(vm);
+      escritorio.moveToFront(vm);
+    }//GEN-LAST:event_jmi_mascotasXclienteActionPerformed
+
+    private void jmi_formularioVisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_formularioVisitasActionPerformed
+      escritorio.removeAll();
+      escritorio.repaint();
+      VistaVisitaDeAtencion vm= new VistaVisitaDeAtencion();
+      vm.setVisible(true);
+      escritorio.add(vm);
+      escritorio.moveToFront(vm);       
+    }//GEN-LAST:event_jmi_formularioVisitasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,6 +281,8 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
     private javax.swing.JMenuItem jmi_P_RegistrarCliente;
     private javax.swing.JMenuItem jmi_Principal_ListadoMascota;
     private javax.swing.JMenuItem jmi_formuarioMascota;
+    private javax.swing.JMenuItem jmi_formularioVisitas;
+    private javax.swing.JMenuItem jmi_mascotasXcliente;
     private javax.swing.JMenuItem jmi_visitasMascota;
     // End of variables declaration//GEN-END:variables
 }

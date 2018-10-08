@@ -122,13 +122,14 @@ public class ClienteData {
             statement.setString(4, cliente.getDireccion());
             statement.setString(5, cliente.getTelefono());
             statement.setString(6, cliente.getPersona_alternativa());
+            statement.setInt(7, cliente.getId_cliente());
             statement.executeUpdate();
             
           
             statement.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un cliente: " + ex.getMessage());
+            System.out.println("Error al actualizar un cliente: " + ex.getMessage());
         }
     
     }

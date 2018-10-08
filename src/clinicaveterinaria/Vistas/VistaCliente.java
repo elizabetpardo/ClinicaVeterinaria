@@ -63,6 +63,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         jb_buscarCliente = new javax.swing.JButton();
         jb_borrarCliente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jb_modificar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -189,6 +190,13 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setText("CLIENTE");
 
+        jb_modificar.setText("Modificar");
+        jb_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_modificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -211,7 +219,8 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jb_borrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                            .addComponent(jb_buscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)))
+                            .addComponent(jb_buscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                            .addComponent(jb_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(186, 186, 186)
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -228,10 +237,12 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                         .addComponent(jb_buscarCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jb_borrarCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_modificar)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jp_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jb_guardarCliente)
                             .addComponent(jb_limpiarCliente)
@@ -295,6 +306,24 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         clienteData.borrarCliente(id);
     }//GEN-LAST:event_jb_borrarClienteActionPerformed
 
+    private void jb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarActionPerformed
+         if (jt_idCliente.getText()!=null){
+             
+            int dni=Integer.parseInt(jt_dni.getText().trim());
+            String apellido=jt_apellido.getText();
+            String nombre=jt_nombre.getText();
+            String direccion=jt_direccion.getText();
+            String telefono=jt_telefono.getText();
+            String personaAlternativa=jt_personaAlternativa.getText();
+            
+            
+
+             Cliente cliente=new Cliente(Integer.parseInt(jt_idCliente.getText()),dni,apellido,nombre,direccion,telefono,personaAlternativa);
+             clienteData.actualizarCliente(cliente);
+    }
+        
+    }//GEN-LAST:event_jb_modificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -304,6 +333,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton jb_cancelarCliente;
     private javax.swing.JButton jb_guardarCliente;
     private javax.swing.JButton jb_limpiarCliente;
+    private javax.swing.JButton jb_modificar;
     private javax.swing.JLabel jl_direccion;
     private javax.swing.JLabel jl_dni;
     private javax.swing.JLabel jl_id;

@@ -47,6 +47,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jb_borrarCliente" pref="105" max="32767" attributes="0"/>
                           <Component id="jb_buscarCliente" pref="105" max="32767" attributes="0"/>
+                          <Component id="jb_modificar" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -69,11 +70,13 @@
                       <Component id="jb_buscarCliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jb_borrarCliente" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jb_modificar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jp_cliente" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                      <EmptySpace pref="52" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jb_guardarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jb_limpiarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -268,6 +271,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="CLIENTE"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jb_modificar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modificar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_modificarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
