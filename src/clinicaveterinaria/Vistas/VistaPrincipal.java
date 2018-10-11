@@ -42,7 +42,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jmi_mascotasXcliente = new javax.swing.JMenuItem();
         jm_P_Tratamientos = new javax.swing.JMenu();
         jmi_Principal_ListadoMascota = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmi_fomularioTratamiento = new javax.swing.JMenuItem();
         jm_P_Visitas = new javax.swing.JMenu();
         jmi_visitasMascota = new javax.swing.JMenuItem();
         jmi_formularioVisitas = new javax.swing.JMenuItem();
@@ -119,13 +119,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jm_P_Tratamientos.add(jmi_Principal_ListadoMascota);
 
-        jMenuItem2.setText("Formulario de tratamiento");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmi_fomularioTratamiento.setText("Formulario de tratamiento");
+        jmi_fomularioTratamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmi_fomularioTratamientoActionPerformed(evt);
             }
         });
-        jm_P_Tratamientos.add(jMenuItem2);
+        jm_P_Tratamientos.add(jmi_fomularioTratamiento);
 
         jm_Clinica.add(jm_P_Tratamientos);
 
@@ -205,14 +205,14 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
       escritorio.moveToFront(vm);
     }//GEN-LAST:event_jmi_visitasMascotaActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jmi_fomularioTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_fomularioTratamientoActionPerformed
       escritorio.removeAll();
       escritorio.repaint();
       VistaTratamiento vm= new VistaTratamiento();
       vm.setVisible(true);
       escritorio.add(vm);
       escritorio.moveToFront(vm);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jmi_fomularioTratamientoActionPerformed
 
     private void jmi_mascotasXclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mascotasXclienteActionPerformed
       escritorio.removeAll();
@@ -271,7 +271,6 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar jm_Clinica;
     private javax.swing.JMenu jm_P_Archivo;
     private javax.swing.JMenu jm_P_Clientes;
@@ -280,6 +279,7 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
     private javax.swing.JMenu jm_P_Visitas;
     private javax.swing.JMenuItem jmi_P_RegistrarCliente;
     private javax.swing.JMenuItem jmi_Principal_ListadoMascota;
+    private javax.swing.JMenuItem jmi_fomularioTratamiento;
     private javax.swing.JMenuItem jmi_formuarioMascota;
     private javax.swing.JMenuItem jmi_formularioVisitas;
     private javax.swing.JMenuItem jmi_mascotasXcliente;

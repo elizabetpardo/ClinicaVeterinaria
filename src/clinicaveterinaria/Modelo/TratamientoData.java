@@ -113,13 +113,13 @@ public class TratamientoData {
     
         try {
             
-            String sql = "UPDATE tratamiento SET cod_tratamiento = ? , tipo = ? , descripcion = ? , importe = ? , activo = ? WHERE id = ?;";
+            String sql = "UPDATE tratamiento SET cod_tratamiento = ? , tipo = ? , descripcion = ? , importe = ? , activo = ? WHERE id_tratamiento = ?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, tratamiento.getCod_tratamiento());
             statement.setInt(2, tratamiento.getTipo());
             statement.setString(3, tratamiento.getDescripcion());
-            statement.setInt(4, (int) tratamiento.getImporte());
+            statement.setDouble(4,tratamiento.getImporte());
             statement.setBoolean(5, tratamiento.getActivo());
             statement.setInt(6, tratamiento.getId_tratamiento());
             
@@ -129,7 +129,7 @@ public class TratamientoData {
             statement.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un tratamiento: " + ex.getMessage());
+            System.out.println("Error al actualizar un tratamiento: " + ex.getMessage());
         }
     
     }
