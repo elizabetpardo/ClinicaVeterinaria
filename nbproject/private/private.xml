@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/vistas/VistaPrincipal.java</file>
-            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/vistas/ListadoMascotaxTratamiento.java</file>
-            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Conexion.java</file>
+            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/VisitasData.java</file>
             <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/vistas/VistaCliente.java</file>
+            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/vistas/VistaVisitaDeAtencion.java</file>
         </group>
     </open-files>
 </project-private>

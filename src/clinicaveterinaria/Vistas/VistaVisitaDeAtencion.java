@@ -5,17 +5,35 @@
  */
 package clinicaveterinaria.vistas;
 
+import clinicaveterinaria.Modelo.ClienteData;
+import clinicaveterinaria.Modelo.VisitasData;
+import clinicaveterinaria.Modelo.Conexion;
+import clinicaveterinaria.Modelo.VisitaDeAtencion;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author elinote
  */
 public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
-
+  private VisitasData visitasData;
+ private Conexion conexion;
     /**
      * Creates new form VistaVisitasDeAtencion
      */
     public VistaVisitaDeAtencion() {
         initComponents();
+              try {
+        conexion = new Conexion("jdbc:mysql://localhost/clinicaveterinaria", "root", "");
+        visitasData = new VisitasData(conexion);
+        
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(VistaVisitaDeAtencion.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     /**
@@ -34,7 +52,7 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jt_idMascota = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jb_idTratamiento = new javax.swing.JTextField();
+        jt_idTratamiento = new javax.swing.JTextField();
         jl_fecha = new javax.swing.JLabel();
         jt_fecha = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -93,7 +111,7 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jt_idVisita, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                         .addComponent(jt_idMascota)
-                        .addComponent(jb_idTratamiento)
+                        .addComponent(jt_idTratamiento)
                         .addComponent(jt_fecha))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
@@ -111,7 +129,7 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jb_idTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_idTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -125,14 +143,34 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
         );
 
         jb_buscar.setText("Buscar");
+        jb_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_buscarActionPerformed(evt);
+            }
+        });
 
         jb_borrar.setText("Borrar");
+        jb_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_borrarActionPerformed(evt);
+            }
+        });
 
         jb_guardar.setText("Guardar");
 
         jb_limpiar.setText("Limpiar");
+        jb_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_limpiarActionPerformed(evt);
+            }
+        });
 
         jb_cancelar.setText("Cancelar");
+        jb_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_cancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,6 +227,40 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jt_idVisitaActionPerformed
 
+    private void jb_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_limpiarActionPerformed
+       jt_idMascota.setText("");
+    }//GEN-LAST:event_jb_limpiarActionPerformed
+
+    private void jb_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jb_cancelarActionPerformed
+
+    private void jb_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_borrarActionPerformed
+        
+        int id_mascota=Integer.parseInt(jt_idMascota.getText());
+        int id_tratamiento=Integer.parseInt(jt_idTratamiento.getText());
+        visitasData.borrarVisita(id_mascota,id_tratamiento);
+        
+        
+        
+    }//GEN-LAST:event_jb_borrarActionPerformed
+
+    private void jb_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarActionPerformed
+        /* int id_mascota=Integer.parseInt(jt_idMascota.getText());
+         int id_tratamiento=Integer.parseInt(jt_idTratamiento.getText());
+        VisitaDeAtencion visita=visitasData.buscarVisita(id_mascota,id_tratamiento);
+        
+        if(visita!=null){
+                jt_idCliente.setText(cliente.getId_cliente()+"");
+                jt_dni.setText(Integer.toString(cliente.getDni()));
+                jt_apellido.setText(cliente.getApellido());
+                jt_nombre.setText(cliente.getNombre());
+                jt_direccion.setText(cliente.getDireccion());
+                jt_telefono.setText(cliente.getTelefono());
+                jt_personaAlternativa.setText(cliente.getPersona_alternativa());
+        }    */ 
+    }//GEN-LAST:event_jb_buscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -201,12 +273,12 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
     private javax.swing.JButton jb_buscar;
     private javax.swing.JButton jb_cancelar;
     private javax.swing.JButton jb_guardar;
-    private javax.swing.JTextField jb_idTratamiento;
     private javax.swing.JButton jb_limpiar;
     private javax.swing.JLabel jl_fecha;
     private javax.swing.JLabel jl_idVisita;
     private javax.swing.JTextField jt_fecha;
     private javax.swing.JTextField jt_idMascota;
+    private javax.swing.JTextField jt_idTratamiento;
     private javax.swing.JTextField jt_idVisita;
     private javax.swing.JTextArea jta_detalle;
     // End of variables declaration//GEN-END:variables

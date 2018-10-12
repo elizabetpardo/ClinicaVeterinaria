@@ -162,8 +162,66 @@ public class VisitasData {
         return md.buscarTratamiento(id);
     
     }
+      
+      public void borrarVisita(int idMascota,int idTratamiento){
+    
+        try {
+            
+            String sql = "DELETE FROM visitadeatencion WHERE idAlumno =? and idMateria =?;";
+
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, idMascota);
+            statement.setInt(2, idTratamiento);
+       ;
+           
+            
+            statement.executeUpdate();
+            
+            
+            statement.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+        }
+        
+        
         
         
     
+    }
         
+        /* public VisitaDeAtencion buscarVisita(int idMascota,int idTratamiento){
+    
+        VisitaDeAtencion visita=null;
+    try {
+            
+            String sql = "SELECT * FROM visitadeatencion WHERE id =?;";
+
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, idMascota);
+           
+            
+            ResultSet resultSet=statement.executeQuery();
+            
+            while(resultSet.next()){
+                visita = new VisitaDeAtencion();
+                visita.setMascota(mascota);resultSet.getInt("id"));
+                visita.setNombre(resultSet.getString("nombre"));
+               
+
+                
+            }      
+            statement.close();
+            
+            
+            
+            
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+        }
+    return visita;
+    
+        
+}*/
 }

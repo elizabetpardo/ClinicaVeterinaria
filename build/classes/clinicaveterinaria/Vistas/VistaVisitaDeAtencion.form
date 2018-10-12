@@ -117,7 +117,7 @@
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jt_idVisita" pref="108" max="32767" attributes="0"/>
                           <Component id="jt_idMascota" max="32767" attributes="0"/>
-                          <Component id="jb_idTratamiento" max="32767" attributes="0"/>
+                          <Component id="jt_idTratamiento" max="32767" attributes="0"/>
                           <Component id="jt_fecha" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -141,7 +141,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jb_idTratamiento" min="-2" max="-2" attributes="0"/>
+                      <Component id="jt_idTratamiento" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -182,7 +182,7 @@
             <Property name="text" type="java.lang.String" value="ID TRATAMIENTO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jb_idTratamiento">
+        <Component class="javax.swing.JTextField" name="jt_idTratamiento">
         </Component>
         <Component class="javax.swing.JLabel" name="jl_fecha">
           <Properties>
@@ -217,11 +217,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_buscarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jb_borrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Borrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_borrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jb_guardar">
       <Properties>
@@ -232,11 +238,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_limpiarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jb_cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_cancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
