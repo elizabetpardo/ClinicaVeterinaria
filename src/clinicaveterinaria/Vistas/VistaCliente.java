@@ -262,7 +262,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         String telefono=jt_telefono.getText();
         String personaAlternativa=jt_personaAlternativa.getText();
          
-        clinicaveterinaria.Modelo.Cliente cliente= new clinicaveterinaria.Modelo.Cliente(dni,apellido,nombre,direccion,telefono,personaAlternativa);
+        Cliente cliente= new Cliente(dni,apellido,nombre,direccion,telefono,personaAlternativa);
         clienteData.guardarCliente(cliente);
          jt_idCliente.setText(cliente.getId_cliente()+"");
     }//GEN-LAST:event_jb_guardarClienteActionPerformed

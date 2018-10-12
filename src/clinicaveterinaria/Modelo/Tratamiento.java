@@ -32,6 +32,14 @@ public class Tratamiento {
         this.activo = activo;
     }
 
+    public Tratamiento(String cod_tratamiento, int tipo, String descripcion, double importe, boolean activo) {
+        this.cod_tratamiento = cod_tratamiento;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+        this.importe = importe;
+        this.activo = activo;
+    }
+
     public int getId_tratamiento() {
         return id_tratamiento;
     }

@@ -5,19 +5,29 @@
  */
 package clinicaveterinaria.vistas;
 
-/**
- *
- * @author Usuario
- */
-public class VistaMascota extends javax.swing.JInternalFrame {
+import clinicaveterinaria.Modelo.Mascota;
+import clinicaveterinaria.Modelo.MascotaData;
+import clinicaveterinaria.Modelo.Conexion;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+public class VistaMascota extends javax.swing.JInternalFrame {
+private MascotaData clienteData;
+ private Conexion conexion;
     /**
      * Creates new form Mascota
      */
     public VistaMascota() {
         initComponents();
+          try {
+        conexion = new Conexion("jdbc:mysql://localhost/clinicaveterinaria", "root", "");
+       // MascotaData = new MascotaData(conexion);//
+        
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(VistaMascota.class.getName()).log(Level.SEVERE, null, ex);
     }
-
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,10 +86,20 @@ public class VistaMascota extends javax.swing.JInternalFrame {
         jl_Mascota.setText("MASCOTA");
 
         jb_guardar.setText("Guardar");
+        jb_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_guardarActionPerformed(evt);
+            }
+        });
 
         jb_borrar.setText("Borrar");
 
         jb_cancelar.setText("Cancelar");
+        jb_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_cancelarActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -88,6 +108,12 @@ public class VistaMascota extends javax.swing.JInternalFrame {
         jl_idMascota.setText("ID");
 
         jl_Mascota_Alias.setText("ALIAS");
+
+        jt_alias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_aliasActionPerformed(evt);
+            }
+        });
 
         jl_sexo.setText("SEXO");
 
@@ -191,8 +217,18 @@ public class VistaMascota extends javax.swing.JInternalFrame {
         );
 
         jb_buscar.setText("Buscar");
+        jb_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_buscarActionPerformed(evt);
+            }
+        });
 
         jb_limpiar.setText("Limpiar");
+        jb_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_limpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,6 +282,59 @@ public class VistaMascota extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jb_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_guardarActionPerformed
+      /*
+        int cliente=Integer.parseInt(jt_idDueño.getText().trim());
+        String alias=jt_alias.getText();
+        String nombre=jt_nombre.getText();
+        String direccion=jt_direccion.getText();
+        String raza=jt_raza.getText();
+        String color_pelo=jtf_Mascota_Pelo.getText();
+         
+        clinicaveterinaria.Modelo.Mascota mascota= new clinicaveterinaria.Modelo.Mascota(  cliente, codigo, alias,sexo, especie, raza, colorpelo,  fechNac, pesoPromedio,pesoActual);
+        MascotaData.guardarMascota(mascota);
+         jt_idMascota.setText(mascota.getId_mascota()+"");        // TODO add your handling code here:*/
+    }//GEN-LAST:event_jb_guardarActionPerformed
+
+    private void jb_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_limpiarActionPerformed
+     /*jt_idMascota.setText(""); 
+     jt_idDueño.setText("");
+     jt_alias.setText("");
+     jt_nombre.setText("");
+     jt_direccion.setText("");
+     jt_raza.setText("");
+     jtf_Mascota_Pelo.setText("");
+     jtf_Mascota_F.setText(""); 
+     jtf_Mascota_PesoActual.setText(""); 
+// TODO add your handling code here:*/
+    }//GEN-LAST:event_jb_limpiarActionPerformed
+
+    private void jt_aliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_aliasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_aliasActionPerformed
+
+    private void jb_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cancelarActionPerformed
+    dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_cancelarActionPerformed
+
+    private void jb_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarActionPerformed
+        /*
+        // int id=Integer.parseInt(jt_idMascota.getText());
+        Mascota mascota=MascotaData.buscarMascota(id);
+        if(mascota!=null){
+               // jt_idMascota.setText(Mascota.getId_mascota()+"");
+                jt_idDueño.setText(Integer.toString(cliente.getDni()));
+                jt_alias.setText(cliente.getApellido());
+                jt_nombre.setText(cliente.getNombre());
+               // jt_direccion.setText(cliente.getDireccion());
+               // jt_raza.setText(cliente.getTelefono());
+               // jtf_Mascota_Pelo.setText(cliente.getPersona_alternativa());
+               // jtf_Mascota_F.setText(cliente.getDireccion());
+                //jtf_Mascota_PesoActual.setText(cliente.getDireccion());//
+        }     
+                // TODO add your handling code here:*/
+    }//GEN-LAST:event_jb_buscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
