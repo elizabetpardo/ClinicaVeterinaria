@@ -285,7 +285,7 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
             boolean activo=jcb_Activo.isSelected();
             
             
-             Tratamiento tratamiento=new Tratamiento(codigo, tipo, descripcion, importe, activo );
+             Tratamiento tratamiento=new Tratamiento(Integer.parseInt(jt_idTratamiento.getText()),codigo, tipo, descripcion, importe, activo );
              tratamientoData.actualizarTratamiento(tratamiento);
           }   
     }//GEN-LAST:event_jb_modificarActionPerformed

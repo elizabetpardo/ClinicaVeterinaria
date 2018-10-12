@@ -103,7 +103,7 @@ public class TratamientoData {
             statement.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un tratamiento: " + ex.getMessage());
+            System.out.println("Error al eliminar un tratamiento: " + ex.getMessage());
         }
         
     
@@ -122,7 +122,6 @@ public class TratamientoData {
             statement.setDouble(4,tratamiento.getImporte());
             statement.setBoolean(5, tratamiento.getActivo());
             statement.setInt(6, tratamiento.getId_tratamiento());
-            
             statement.executeUpdate();
             
           
