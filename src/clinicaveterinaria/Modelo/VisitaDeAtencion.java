@@ -20,8 +20,21 @@ public class VisitaDeAtencion {
    private String detalle;
 
     public VisitaDeAtencion(){}
-    public VisitaDeAtencion(int id, Mascota mascota, Tratamiento tratamiento, Cliente cliente, LocalDate fecha, String detalle) {
-        this.id_visita = id;
+      public VisitaDeAtencion(int id,int idMascota,int idTratamiento, LocalDate fecha, String detalle) {
+        this.id_visita=id;
+        this.mascota.setId_mascota(idMascota);
+        this.tratamiento.setId_tratamiento(idTratamiento); 
+        this.fecha = fecha;
+        this.detalle = detalle;
+    }
+    public VisitaDeAtencion(int idMascota,int idTratamiento, LocalDate fecha, String detalle) {
+        this.mascota.setId_mascota(idMascota);
+        this.tratamiento.setId_tratamiento(idTratamiento); 
+        this.fecha = fecha;
+        this.detalle = detalle;
+    }
+    
+    public VisitaDeAtencion(Mascota mascota, Tratamiento tratamiento, LocalDate fecha, String detalle) {
         this.mascota = mascota;
         this.tratamiento = tratamiento;
         this.fecha = fecha;

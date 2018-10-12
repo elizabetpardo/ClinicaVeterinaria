@@ -54,7 +54,7 @@ public class VisitasData {
             statement.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar una visita: " + ex.getMessage());
+            System.out.println("Error al in una visita de atencion: " + ex.getMessage());
         }
     }
     
@@ -149,39 +149,24 @@ public class VisitasData {
         return visitas;
       
     }*/
-      public Mascota buscarMascota(int id){
     
-        MascotaData ad=new MascotaData(conexion);
-        
-        return ad.buscarMascota(id);
-        
-    }
-      public Tratamiento buscarTratamiento(int id){
-    
-        TratamientoData md=new TratamientoData(conexion);
-        return md.buscarTratamiento(id);
-    
-    }
       
-      public void borrarVisita(int idMascota,int idTratamiento){
+      public void borrarVisita(int id){
     
         try {
             
-            String sql = "DELETE FROM visitadeatencion WHERE idAlumno =? and idMateria =?;";
+            String sql = "DELETE FROM visitadeatencion WHERE id_visita =?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, idMascota);
-            statement.setInt(2, idTratamiento);
-       ;
-           
-            
+            statement.setInt(1, id);
+        
             statement.executeUpdate();
             
             
             statement.close();
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+            System.out.println("Error eliminar una visita: " + ex.getMessage());
         }
         
         
@@ -189,39 +174,77 @@ public class VisitasData {
         
     
     }
-        
-        /* public VisitaDeAtencion buscarVisita(int idMascota,int idTratamiento){
+      public void actualizarVisita(VisitaDeAtencion visita)
+      {
+         try {
+            
+            String sql = "UPDATE visitadeatencion SET id_mascota = ?, id_tratamiento = ?, fecha = ?, detalle = ? WHERE id_visita = ?;";
+
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            
+            statement.setInt(1, visita.getMascota().getId_mascota());
+            statement.setInt(2, visita.getTratamiento().getId_tratamiento());
+            statement.setDate(3,Date.valueOf(visita.getFecha()));
+            statement.setString(4, visita.getDetalle());
+            statement.setInt(5, visita.getId_visita());
+            statement.executeUpdate();
+            
+          
+            statement.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al actualizar una visita de atención: " + ex.getMessage());
+        }
+      
+      }
+      public VisitaDeAtencion buscarVisita(int id){
     
         VisitaDeAtencion visita=null;
     try {
             
-            String sql = "SELECT * FROM visitadeatencion WHERE id =?;";
+            String sql = "SELECT * FROM visitadeatencion WHERE id_visita =?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, idMascota);
+            statement.setInt(1, id);
            
-            
             ResultSet resultSet=statement.executeQuery();
             
             while(resultSet.next()){
                 visita = new VisitaDeAtencion();
-                visita.setMascota(mascota);resultSet.getInt("id"));
-                visita.setNombre(resultSet.getString("nombre"));
+                visita.setId_visita(resultSet.getInt("id_visita"));
+                
+                Mascota m= buscarMascota(resultSet.getInt("id_mascota"));
+                visita.setMascota(m);
+                
+                Tratamiento t= buscarTratamiento(resultSet.getInt("id_tratamiento"));
+                visita.setTratamiento(t);
+                
+                
+                visita.setFecha(resultSet.getDate("fecha").toLocalDate());
+                visita.setDetalle(resultSet.getString("detalle"));
                
-
                 
             }      
             statement.close();
-            
-            
-            
-            
+              
     
         } catch (SQLException ex) {
-            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+            System.out.println("Error al buscar una visita: " + ex.getMessage());
         }
-    return visita;
-    
         
-}*/
+    return visita;     
+}
+      public Mascota buscarMascota(int id){
+    
+        MascotaData m=new MascotaData(conexion);
+        
+        return m.buscarMascota(id);
+        
+        }
+      public Tratamiento buscarTratamiento(int id){
+    
+        TratamientoData t=new TratamientoData(conexion);
+        return t.buscarTratamiento(id);
+    
+      }
 }
