@@ -80,6 +80,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_Principal_ListadoMascotaActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmi_listadoTratamientosActivos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listado Tratamientos Activos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_listadoTratamientosActivosActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmi_fomularioTratamiento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Formulario de tratamiento"/>

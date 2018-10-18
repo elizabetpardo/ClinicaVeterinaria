@@ -42,6 +42,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jmi_mascotasXcliente = new javax.swing.JMenuItem();
         jm_P_Tratamientos = new javax.swing.JMenu();
         jmi_Principal_ListadoMascota = new javax.swing.JMenuItem();
+        jmi_listadoTratamientosActivos = new javax.swing.JMenuItem();
         jmi_fomularioTratamiento = new javax.swing.JMenuItem();
         jm_P_Visitas = new javax.swing.JMenu();
         jmi_visitasMascota = new javax.swing.JMenuItem();
@@ -118,6 +119,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
         jm_P_Tratamientos.add(jmi_Principal_ListadoMascota);
+
+        jmi_listadoTratamientosActivos.setText("Listado Tratamientos Activos");
+        jmi_listadoTratamientosActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_listadoTratamientosActivosActionPerformed(evt);
+            }
+        });
+        jm_P_Tratamientos.add(jmi_listadoTratamientosActivos);
 
         jmi_fomularioTratamiento.setText("Formulario de tratamiento");
         jmi_fomularioTratamiento.addActionListener(new java.awt.event.ActionListener() {
@@ -232,6 +241,15 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
       escritorio.moveToFront(vm);       
     }//GEN-LAST:event_jmi_formularioVisitasActionPerformed
 
+    private void jmi_listadoTratamientosActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listadoTratamientosActivosActionPerformed
+       escritorio.removeAll();
+      escritorio.repaint();
+      ListadoTratamientosActivos lta= new ListadoTratamientosActivos();
+      lta.setVisible(true);
+      escritorio.add(lta);
+      escritorio.moveToFront(lta); 
+    }//GEN-LAST:event_jmi_listadoTratamientosActivosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,6 +300,7 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
     private javax.swing.JMenuItem jmi_fomularioTratamiento;
     private javax.swing.JMenuItem jmi_formuarioMascota;
     private javax.swing.JMenuItem jmi_formularioVisitas;
+    private javax.swing.JMenuItem jmi_listadoTratamientosActivos;
     private javax.swing.JMenuItem jmi_mascotasXcliente;
     private javax.swing.JMenuItem jmi_visitasMascota;
     // End of variables declaration//GEN-END:variables
