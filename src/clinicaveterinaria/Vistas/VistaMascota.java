@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class VistaMascota extends javax.swing.JInternalFrame {
-private MascotaData clienteData;
+private MascotaData MascotaData;
  private Conexion conexion;
     /**
      * Creates new form Mascota
@@ -93,6 +93,11 @@ private MascotaData clienteData;
         });
 
         jb_borrar.setText("Borrar");
+        jb_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_borrarActionPerformed(evt);
+            }
+        });
 
         jb_cancelar.setText("Cancelar");
         jb_cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -287,27 +292,30 @@ private MascotaData clienteData;
       /*
         int cliente=Integer.parseInt(jt_idDueño.getText().trim());
         String alias=jt_alias.getText();
-        String nombre=jt_nombre.getText();
-        String direccion=jt_direccion.getText();
+       // String nombre=jt_nombre.getText(); FALTA EL DE SEXO PERO NOSE HACERLO//
+        int especie= jComboBox1.getSelectedIndex();
         String raza=jt_raza.getText();
         String color_pelo=jtf_Mascota_Pelo.getText();
+        String fecha_nac=jtf_Mascota_F.getText();
+        String peso_actual=jtf_Mascota_PesoActual.getText();
          
-        clinicaveterinaria.Modelo.Mascota mascota= new clinicaveterinaria.Modelo.Mascota(  cliente, codigo, alias,sexo, especie, raza, colorpelo,  fechNac, pesoPromedio,pesoActual);
+        clinicaveterinaria.Modelo.Mascota mascota= new clinicaveterinaria.Modelo.Mascota(  cliente, alias,sexo, especie, raza, color_pelo,  fecha_nac,peso_actual);
         MascotaData.guardarMascota(mascota);
-         jt_idMascota.setText(mascota.getId_mascota()+"");        // TODO add your handling code here:*/
+         jt_idMascota.setText(mascota.getId_mascota()+""); */       // TODO add your handling code here:
     }//GEN-LAST:event_jb_guardarActionPerformed
 
     private void jb_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_limpiarActionPerformed
-     /*jt_idMascota.setText(""); 
+     jt_idMascota.setText(""); 
      jt_idDueño.setText("");
      jt_alias.setText("");
-     jt_nombre.setText("");
-     jt_direccion.setText("");
+     jtb_Mascota_M.setSelected(false);
+     jrb_Mascota_F.setSelected(false);
+     jComboBox1.setSelectedIndex(0);
      jt_raza.setText("");
      jtf_Mascota_Pelo.setText("");
      jtf_Mascota_F.setText(""); 
      jtf_Mascota_PesoActual.setText(""); 
-// TODO add your handling code here:*/
+// TODO add your handling code here:
     }//GEN-LAST:event_jb_limpiarActionPerformed
 
     private void jt_aliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_aliasActionPerformed
@@ -319,22 +327,27 @@ private MascotaData clienteData;
     }//GEN-LAST:event_jb_cancelarActionPerformed
 
     private void jb_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarActionPerformed
-        /*
-        // int id=Integer.parseInt(jt_idMascota.getText());
+      /*  
+        int id=Integer.parseInt(jt_idMascota.getText());
         Mascota mascota=MascotaData.buscarMascota(id);
         if(mascota!=null){
-               // jt_idMascota.setText(Mascota.getId_mascota()+"");
-                jt_idDueño.setText(Integer.toString(cliente.getDni()));
-                jt_alias.setText(cliente.getApellido());
+                jt_idMascota.setText(mascota.getId_mascota()+"");
+                jt_idDueño.setText(mascota.getCliente());
+                jt_alias.setText(mascota.getAlias());
                 jt_nombre.setText(cliente.getNombre());
-               // jt_direccion.setText(cliente.getDireccion());
-               // jt_raza.setText(cliente.getTelefono());
-               // jtf_Mascota_Pelo.setText(cliente.getPersona_alternativa());
-               // jtf_Mascota_F.setText(cliente.getDireccion());
-                //jtf_Mascota_PesoActual.setText(cliente.getDireccion());//
+                jComboBox1.setSelectedIndex(mascota.getEspecie());
+                jt_raza.setText(cliente.getTelefono());
+                jtf_Mascota_Pelo.setText(cliente.getPersona_alternativa());
+                jtf_Mascota_F.setText(cliente.getDireccion());
+                jtf_Mascota_PesoActual.setText(cliente.getDireccion());
         }     
                 // TODO add your handling code here:*/
     }//GEN-LAST:event_jb_buscarActionPerformed
+
+    private void jb_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_borrarActionPerformed
+       int id=Integer.parseInt(jt_idMascota.getText());
+        MascotaData.borrarMascota(id);       // TODO add your handling code here:
+    }//GEN-LAST:event_jb_borrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

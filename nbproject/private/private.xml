@@ -3,21 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/VisitasData.java</file>
-            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/vistas/VistaCliente.java</file>
-            <file>file:/C:/Users/elinote/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/vistas/VistaVisitaDeAtencion.java</file>
-=======
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Vistas/VistaMascota.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/MascotaData.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Conexion.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/ClinicaVeterinaria.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Vistas/VistaCliente.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/ClienteData.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Vistas/VistaTratamiento.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Mascota.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Cliente.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/TratamientoData.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Modelo/Tratamiento.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/ClinicaVeterinaria/src/clinicaveterinaria/Vistas/VistaPrincipal.java</file>
->>>>>>> fe6a9335316fd54f5649e1adb805eeb35de3d9ad
         </group>
     </open-files>
 </project-private>
