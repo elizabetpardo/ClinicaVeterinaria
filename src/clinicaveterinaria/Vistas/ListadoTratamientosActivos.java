@@ -129,7 +129,7 @@ public class ListadoTratamientosActivos extends javax.swing.JInternalFrame {
         List<Tratamiento> tratamientos = new ArrayList<>();
         tratamientos = tratamientoData.listarTratamientosActivos();
 
-        for(int i=0;tratamientos.get(i)!=null;i++){
+        for(int i=0;i<tratamientos.size();i++){
 
             jTabla.setValueAt(tratamientos.get(i).getId_tratamiento(), i, 0);
             jTabla.setValueAt(tratamientos.get(i).getCod_tratamiento(), i, 1);

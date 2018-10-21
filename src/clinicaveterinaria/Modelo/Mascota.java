@@ -32,7 +32,7 @@ public class Mascota {
       
     }
    
-    public Mascota(int id_mascota, Cliente cliente, int codigo, String alias, String sexo, String especie, String raza,String colorpelo, LocalDate fechNac, double pesoPromedio, double pesoActual) {
+    public Mascota(int id_mascota, Cliente cliente, int codigo, String alias, String sexo, String especie, String raza,String colorpelo, LocalDate fecha_nac, double pesoPromedio, double pesoActual) {
         this.id_mascota = id_mascota;
         this.cliente = cliente;
         this.cod_mascota = codigo;
@@ -41,13 +41,24 @@ public class Mascota {
         this.especie = especie;
         this.raza = raza;
         this.color_pelo=colorpelo;
-        this.fecha_nac = fechNac;
+        this.fecha_nac = fecha_nac;
         this.peso_promedio = pesoPromedio;
         this.peso_actual = pesoActual;
     }
     
-    
-    
+    public Mascota(Cliente cliente, int codigo, String alias, String sexo, String especie, String raza,String colorpelo, LocalDate fecha_nac, double pesoPromedio, double pesoActual) {
+        this.cliente = cliente;
+        this.cod_mascota = codigo;
+        this.alias = alias;
+        this.sexo = sexo;
+        this.especie = especie;
+        this.raza = raza;
+        this.color_pelo=colorpelo;
+        this.fecha_nac = fecha_nac;
+        this.peso_promedio = pesoPromedio;
+        this.peso_actual = pesoActual;
+    }
+  
     public int getId_mascota() {
         return id_mascota;
     }
@@ -116,8 +127,8 @@ public class Mascota {
         return fecha_nac;
     }
 
-    public void setFechNac(LocalDate fechNac) {
-        this.fecha_nac = fechNac;
+    public void setFecha_nac(LocalDate fecha_nac) {
+        this.fecha_nac = fecha_nac;
     }
 
     public double getPeso_promedio() {

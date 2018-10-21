@@ -74,11 +74,19 @@
                   <Group type="102" attributes="0">
                       <Component id="jPanel1" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jb_buscar" pref="77" max="32767" attributes="0"/>
-                          <Component id="jb_borrar" pref="77" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jb_buscar" pref="77" max="32767" attributes="0"/>
+                                  <Component id="jb_borrar" pref="77" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="116" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jb_modificar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="118" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="116" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -100,11 +108,13 @@
                       <Component id="jb_buscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="jb_borrar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jb_modificar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <Component id="jPanel1" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jb_guardar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jb_limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -166,37 +176,56 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jl_Mascota_Peso1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="jtf_Mascota_PesoPromedio" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jl_idMascota" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jl_Mascota_Alias" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
-                              <Component id="jl_sexo" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
-                              <Component id="jl_Mascota_Raza" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
-                              <Component id="jl_Mascota_Pelo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jl_Mascota_Fecha" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                              <Component id="jl_Mascota_Peso" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                               <Component id="jl_Mascota_Dueño" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jtf_Mascota_F" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jtf_Mascota_Pelo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jt_raza" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jt_alias" alignment="0" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jt_idMascota" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
-                              <Component id="jt_idDueño" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jtf_Mascota_PesoActual" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jtb_Mascota_M" min="-2" pref="83" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jrb_Mascota_F" min="-2" pref="81" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jt_idDueño" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jl_Mascota_Especie" min="-2" pref="52" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" pref="164" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jl_Mascota_Alias" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
+                                  <Component id="jl_sexo" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
+                                  <Component id="jl_Mascota_Raza" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
+                                  <Component id="jl_Mascota_Pelo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jl_Mascota_Fecha" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <Component id="jl_Mascota_Peso" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jt_fecha" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtf_Mascota_Pelo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jt_raza" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jt_alias" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtf_Mascota_PesoActual" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jrb_Mascota_M" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jrb_Mascota_F" min="-2" pref="81" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jl_Mascota_Especie" min="-2" pref="52" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jcb_Especie" min="-2" pref="164" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jl_Mascota_Codigo" min="-2" pref="69" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jt_Codigo" min="-2" pref="164" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="26" pref="47" max="32767" attributes="0"/>
@@ -211,10 +240,15 @@
                       <Component id="jl_idMascota" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jt_idMascota" alignment="3" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" pref="17" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jt_idDueño" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jl_Mascota_Dueño" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jt_Codigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jl_Mascota_Codigo" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -225,14 +259,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jl_sexo" min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jtb_Mascota_M" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jrb_Mascota_M" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jrb_Mascota_F" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jl_Mascota_Especie" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcb_Especie" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -246,18 +280,25 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="jl_Mascota_Fecha" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jl_Mascota_Peso" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jtf_Mascota_F" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jt_fecha" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jtf_Mascota_PesoActual" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jl_Mascota_Peso1" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                          <Component id="jtf_Mascota_PesoPromedio" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -276,6 +317,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_idMascota">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jt_idMascotaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_Mascota_Alias">
           <Properties>
@@ -292,15 +336,21 @@
             <Property name="text" type="java.lang.String" value="SEXO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jtb_Mascota_M">
+        <Component class="javax.swing.JRadioButton" name="jrb_Mascota_M">
           <Properties>
             <Property name="text" type="java.lang.String" value="Masculino"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrb_Mascota_MActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jrb_Mascota_F">
           <Properties>
             <Property name="text" type="java.lang.String" value="Femenino"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrb_Mascota_FActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_Mascota_Especie">
           <Properties>
@@ -326,7 +376,7 @@
             <Property name="text" type="java.lang.String" value="FECHA DE NACIMIENTO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_Mascota_F">
+        <Component class="javax.swing.JTextField" name="jt_fecha">
         </Component>
         <Component class="javax.swing.JLabel" name="jl_Mascota_Peso">
           <Properties>
@@ -335,7 +385,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtf_Mascota_PesoActual">
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="jcb_Especie">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -347,9 +397,26 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="PERRO&#xa;GATO&#xa;LORO&#xa;HAMSTER"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcb_EspecieActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jl_Mascota_Codigo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CODIGO"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jt_Codigo">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jl_Mascota_Peso1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="PESO PROMEDIO"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtf_Mascota_PesoPromedio">
         </Component>
       </SubComponents>
     </Container>
@@ -367,6 +434,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_limpiarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jb_modificar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modificar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_modificarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

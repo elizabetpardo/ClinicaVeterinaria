@@ -71,6 +71,11 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
         jl_tipo.setText("TIPO");
 
         jcbx_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VACUNACIÓN", "ENFERMEDAD", "CURACIONES", "BAÑO Y CORTE DE PELO", "CASTRACIÓN", "OTROS" }));
+        jcbx_tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbx_tipoActionPerformed(evt);
+            }
+        });
 
         jl_descripcion.setText("DESCRIPCIÓN");
 
@@ -294,6 +299,10 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
        int id=Integer.parseInt(jt_idTratamiento.getText());
         tratamientoData.borrarTratamiento(id);
     }//GEN-LAST:event_jb_BorrarActionPerformed
+
+    private void jcbx_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbx_tipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbx_tipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

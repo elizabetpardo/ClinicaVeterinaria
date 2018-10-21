@@ -8,8 +8,13 @@ package clinicaveterinaria.vistas;
 import clinicaveterinaria.Modelo.Cliente;
 import clinicaveterinaria.Modelo.ClienteData;
 import clinicaveterinaria.Modelo.Conexion;
+import clinicaveterinaria.Modelo.Mascota;
+import clinicaveterinaria.Modelo.MascotaData;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +22,7 @@ import java.util.logging.Logger;
  */
 public class VistaCliente extends javax.swing.JInternalFrame {
  private ClienteData clienteData;
+ private MascotaData mascotaData;
  private Conexion conexion;
     /**
      * Creates new form Cliente
@@ -26,6 +32,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
           try {
         conexion = new Conexion("jdbc:mysql://localhost/clinicaveterinaria", "root", "");
         clienteData = new ClienteData(conexion);
+        mascotaData = new MascotaData(conexion);
         
     } catch (ClassNotFoundException ex) {
         Logger.getLogger(VistaCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,7 +50,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jp_cliente = new javax.swing.JPanel();
-        jt_idCliente = new javax.swing.JTextField();
+        j_idCliente = new javax.swing.JTextField();
         jl_id = new javax.swing.JLabel();
         jt_dni = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -109,7 +116,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                     .addComponent(jl_dni))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jp_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jt_idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(j_idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jt_apellido)
                     .addComponent(jt_dni, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jt_nombre)
@@ -123,7 +130,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
             .addGroup(jp_clienteLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jp_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jt_idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(j_idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_id))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jp_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -264,11 +271,11 @@ public class VistaCliente extends javax.swing.JInternalFrame {
          
         Cliente cliente= new Cliente(dni,apellido,nombre,direccion,telefono,personaAlternativa);
         clienteData.guardarCliente(cliente);
-         jt_idCliente.setText(cliente.getId_cliente()+"");
+         j_idCliente.setText(cliente.getId_cliente()+"");
     }//GEN-LAST:event_jb_guardarClienteActionPerformed
 
     private void jb_limpiarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_limpiarClienteActionPerformed
-     jt_idCliente.setText(""); 
+     j_idCliente.setText(""); 
      jt_dni.setText("");
      jt_apellido.setText("");
      jt_nombre.setText("");
@@ -287,10 +294,10 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
     private void jb_buscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarClienteActionPerformed
         
-        int id=Integer.parseInt(jt_idCliente.getText());
+        int id=Integer.parseInt(j_idCliente.getText());
         Cliente cliente=clienteData.buscarCliente(id);
         if(cliente!=null){
-                jt_idCliente.setText(cliente.getId_cliente()+"");
+                j_idCliente.setText(cliente.getId_cliente()+"");
                 jt_dni.setText(Integer.toString(cliente.getDni()));
                 jt_apellido.setText(cliente.getApellido());
                 jt_nombre.setText(cliente.getNombre());
@@ -302,12 +309,28 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jb_buscarClienteActionPerformed
 
     private void jb_borrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_borrarClienteActionPerformed
-     int id=Integer.parseInt(jt_idCliente.getText());
-        clienteData.borrarCliente(id);
+    int id_cliente=Integer.parseInt(j_idCliente.getText());
+    
+    int resp = JOptionPane.showConfirmDialog(null, "Tambien se eliminaran las MASCOTAS de este cliente. ¿Está seguro?");
+    if(resp == 0){
+        List<Mascota> mascotas = new ArrayList<>();
+        if(clienteData.buscarCliente(id_cliente) != null){
+            mascotas= mascotaData.MascotasPorCliente(id_cliente);
+            
+            int a = mascotas.size();
+            for(int i=0; i<a ;i++){
+                mascotaData.borrarMascota(mascotas.get(i).getId_mascota());
+            }
+        
+            clienteData.borrarCliente(id_cliente);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "El cliente no existe.");
+    }
     }//GEN-LAST:event_jb_borrarClienteActionPerformed
 
     private void jb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarActionPerformed
-         if (jt_idCliente.getText()!=null){
+         if (j_idCliente.getText()!=null){
              
             int dni=Integer.parseInt(jt_dni.getText().trim());
             String apellido=jt_apellido.getText();
@@ -318,7 +341,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
             
             
 
-             Cliente cliente=new Cliente(Integer.parseInt(jt_idCliente.getText()),dni,apellido,nombre,direccion,telefono,personaAlternativa);
+             Cliente cliente=new Cliente(Integer.parseInt(j_idCliente.getText()),dni,apellido,nombre,direccion,telefono,personaAlternativa);
              clienteData.actualizarCliente(cliente);
     }
         
@@ -328,6 +351,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField j_idCliente;
     private javax.swing.JButton jb_borrarCliente;
     private javax.swing.JButton jb_buscarCliente;
     private javax.swing.JButton jb_cancelarCliente;
@@ -344,7 +368,6 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jt_apellido;
     private javax.swing.JTextField jt_direccion;
     private javax.swing.JTextField jt_dni;
-    private javax.swing.JTextField jt_idCliente;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JTextField jt_personaAlternativa;
     private javax.swing.JTextField jt_telefono;

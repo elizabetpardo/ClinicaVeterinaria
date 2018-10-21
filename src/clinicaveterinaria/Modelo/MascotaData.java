@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -87,10 +88,10 @@ public class MascotaData {
                 mascota.setSexo(resultSet.getString("sexo"));
                 mascota.setEspecie(resultSet.getString("especie"));
                 mascota.setRaza(resultSet.getString("raza"));
-                mascota.setColor_pelo(resultSet.getString("colorPelo"));
-                mascota.setFechNac(resultSet.getDate("fecha_nac").toLocalDate());
-                mascota.setPeso_promedio(resultSet.getInt("peso_promedio"));
-                mascota.setPeso_actual(resultSet.getInt("peso_actual"));
+                mascota.setColor_pelo(resultSet.getString("color_pelo"));
+                mascota.setFecha_nac(resultSet.getDate("fecha_nac").toLocalDate());
+                mascota.setPeso_promedio(resultSet.getDouble("peso_promedio"));
+                mascota.setPeso_actual(resultSet.getDouble("peso_actual"));
                 
                 mascotas.add(mascota);
             }      
@@ -104,29 +105,40 @@ public class MascotaData {
     }
     
     public void borrarMascota(int id){
-    try {
+        
+        
+            try {
             
-            String sql = "DELETE FROM mascota WHERE id_mascota =?;";
-
+            String sql = "DELETE FROM visitadeatencion WHERE id_mascota = ?;";
+          
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, id);
-          
+
             statement.executeUpdate();
             
             statement.close();
+            
+            String sql2 = "DELETE FROM mascota WHERE id_mascota = ?;";
+            
+            PreparedStatement statement2 = connection.prepareStatement(sql2, Statement.RETURN_GENERATED_KEYS);
+            statement2.setInt(1, id);
+            
+            statement2.executeUpdate();
+            
+            statement2.close();
     
-        } catch (SQLException ex) {
+            } catch (SQLException ex) {
             System.out.println("Error al insertar un mascota: " + ex.getMessage());
-        }
-        
-    
+            }
+       
+             
     }
     
     public void actualizarMascota(Mascota mascota){
     
         try {
             
-            String sql = "UPDATE mascota SET id_cliente = ? , cod_mascota = ? , alias = ? , sexo = ? , especie = ? , raza = ? , colorPelo = ? , fecha_nac = ? , peso_promedio = ? , peso_actual = ?  WHERE id = ?;";
+            String sql = "UPDATE mascota SET id_cliente = ? , cod_mascota = ? , alias = ? , sexo = ? , especie = ? , raza = ? , color_pelo = ? , fecha_nac = ? , peso_promedio = ? , peso_actual = ?  WHERE id_mascota = ?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, mascota.getCliente().getId_cliente());
@@ -137,8 +149,8 @@ public class MascotaData {
             statement.setString(6, mascota.getRaza());
             statement.setString(7, mascota.getColor_pelo());
             statement.setDate(8, Date.valueOf(mascota.getFecha_nac()));
-            statement.setInt(9, (int)mascota.getPeso_promedio());
-            statement.setInt(10, (int)mascota.getPeso_actual());
+            statement.setDouble(9, mascota.getPeso_promedio());
+            statement.setDouble(10, mascota.getPeso_actual());
             statement.setInt(11, mascota.getId_mascota());
             
             statement.executeUpdate();
@@ -176,10 +188,10 @@ public class MascotaData {
                 mascota.setSexo(resultSet.getString("sexo"));
                 mascota.setEspecie(resultSet.getString("especie"));
                 mascota.setRaza(resultSet.getString("raza"));
-                mascota.setColor_pelo(resultSet.getString("colorPelo"));
-                mascota.setFechNac(resultSet.getDate("fecha_nac").toLocalDate());
-                mascota.setPeso_promedio(resultSet.getInt("peso_promedio"));
-                mascota.setPeso_actual(resultSet.getInt("peso_actual"));
+                mascota.setColor_pelo(resultSet.getString("color_pelo"));
+                mascota.setFecha_nac(resultSet.getDate("fecha_nac").toLocalDate());
+                mascota.setPeso_promedio(resultSet.getDouble("peso_promedio"));
+                mascota.setPeso_actual(resultSet.getDouble("peso_actual"));
 
                 
             }      
@@ -202,5 +214,83 @@ public class MascotaData {
         
         return cd.buscarCliente(id);  
     }    
+    
+    public List<Mascota> MascotasPorCliente(int id_cliente){
+        List<Mascota> mascotas = new ArrayList<>();
+            
+
+        try {
+            String sql = "SELECT * FROM mascota WHERE id_cliente= ?;";
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, id_cliente);
+            
+            ResultSet resultSet = statement.executeQuery();
+            Mascota mascota;
+            while(resultSet.next()){
+                mascota = new Mascota(); 
+                mascota.setId_mascota(resultSet.getInt("id_mascota"));
+                
+                Cliente x=buscarCliente(id_cliente);    
+                mascota.setCliente(x);
+                
+                mascota.setCod_mascota(resultSet.getInt("cod_mascota"));
+                mascota.setAlias(resultSet.getString("alias"));
+                mascota.setSexo(resultSet.getString("sexo"));
+                mascota.setEspecie(resultSet.getString("especie"));
+                mascota.setRaza(resultSet.getString("raza"));
+                mascota.setColor_pelo(resultSet.getString("color_pelo"));
+                mascota.setFecha_nac(resultSet.getDate("fecha_nac").toLocalDate());
+                mascota.setPeso_promedio(resultSet.getDouble("peso_promedio"));
+                mascota.setPeso_actual(resultSet.getDouble("peso_actual"));
+                
+                mascotas.add(mascota);
+            }      
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener las mascotas: " + ex.getMessage());
+        }
+        
+        
+        return mascotas;
+    }
+    
+    public List<Mascota> MascotasPorTratamiento(int tipo){
+        List<Mascota> mascotas = new ArrayList<>();
+            
+
+        try {
+            String sql = "SELECT * FROM mascota,tratamiento,visitadeatencion WHERE tipo= ? AND tratamiento.id_tratamiento = visitadeatencion.id_tratamiento AND mascota.id_mascota = visitadeatencion.id_mascota;";
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, tipo);
+            
+            ResultSet resultSet = statement.executeQuery();
+            Mascota mascota;
+            while(resultSet.next()){
+                mascota = new Mascota(); 
+                mascota.setId_mascota(resultSet.getInt("id_mascota"));
+                
+                Cliente x=buscarCliente(resultSet.getInt("id_mascota"));    
+                mascota.setCliente(x);
+                
+                mascota.setCod_mascota(resultSet.getInt("cod_mascota"));
+                mascota.setAlias(resultSet.getString("alias"));
+                mascota.setSexo(resultSet.getString("sexo"));
+                mascota.setEspecie(resultSet.getString("especie"));
+                mascota.setRaza(resultSet.getString("raza"));
+                mascota.setColor_pelo(resultSet.getString("color_pelo"));
+                mascota.setFecha_nac(resultSet.getDate("fecha_nac").toLocalDate());
+                mascota.setPeso_promedio(resultSet.getDouble("peso_promedio"));
+                mascota.setPeso_actual(resultSet.getDouble("peso_actual"));
+                
+                mascotas.add(mascota);
+            }      
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener las mascotas: " + ex.getMessage());
+        }
+        
+        
+        return mascotas;
+    }
 }
 
