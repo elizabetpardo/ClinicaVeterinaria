@@ -171,6 +171,9 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="j_idCliente">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="j_idClienteKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_id">
           <Properties>
@@ -180,6 +183,7 @@
         <Component class="javax.swing.JTextField" name="jt_dni">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jt_dniActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_dniKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -188,6 +192,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_apellido">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_apellidoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_nombre">
           <Properties>
@@ -195,6 +202,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_nombre">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_nombreKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_direccion">
           <Properties>
@@ -202,6 +212,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_direccion">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_direccionKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_telefono">
           <Properties>
@@ -209,6 +222,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_telefono">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_telefonoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_personaAlt">
           <Properties>
@@ -216,6 +232,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_personaAlternativa">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_personaAlternativaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_dni">
           <Properties>

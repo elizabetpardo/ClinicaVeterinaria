@@ -114,11 +114,22 @@ private MascotaData MascotaData;
 
         jl_Mascota_Dueño.setText("ID DUEÑO");
 
+        jt_idDueño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_idDueñoKeyTyped(evt);
+            }
+        });
+
         jl_idMascota.setText("ID");
 
         jt_idMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jt_idMascotaActionPerformed(evt);
+            }
+        });
+        jt_idMascota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_idMascotaKeyTyped(evt);
             }
         });
 
@@ -127,6 +138,11 @@ private MascotaData MascotaData;
         jt_alias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jt_aliasActionPerformed(evt);
+            }
+        });
+        jt_alias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_aliasKeyTyped(evt);
             }
         });
 
@@ -150,11 +166,35 @@ private MascotaData MascotaData;
 
         jl_Mascota_Raza.setText("RAZA");
 
+        jt_raza.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_razaKeyTyped(evt);
+            }
+        });
+
         jl_Mascota_Pelo.setText("COLOR DE PELO");
+
+        jtf_Mascota_Pelo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_Mascota_PeloKeyTyped(evt);
+            }
+        });
 
         jl_Mascota_Fecha.setText("FECHA DE NACIMIENTO");
 
+        jt_fecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_fechaKeyTyped(evt);
+            }
+        });
+
         jl_Mascota_Peso.setText("PESO ACTUAL");
+
+        jtf_Mascota_PesoActual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_Mascota_PesoActualKeyTyped(evt);
+            }
+        });
 
         jcb_Especie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PERRO", "GATO", "LORO", "HAMSTER" }));
         jcb_Especie.setToolTipText("PERRO\nGATO\nLORO\nHAMSTER");
@@ -166,7 +206,15 @@ private MascotaData MascotaData;
 
         jl_Mascota_Codigo.setText("CODIGO");
 
+        jt_Codigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_CodigoKeyTyped(evt);
+            }
+        });
+
         jl_Mascota_Peso1.setText("PESO PROMEDIO");
+
+        jtf_Mascota_PesoPromedio.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,30 +235,29 @@ private MascotaData MascotaData;
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jt_idMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jt_idDueño, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jl_Mascota_Alias, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jl_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jl_Mascota_Raza, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jl_Mascota_Pelo)
-                                .addComponent(jl_Mascota_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jl_Mascota_Peso, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jt_fecha)
-                                .addComponent(jtf_Mascota_Pelo)
-                                .addComponent(jt_raza)
-                                .addComponent(jt_alias)
-                                .addComponent(jtf_Mascota_PesoActual, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jrb_Mascota_M, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jrb_Mascota_F, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jl_Mascota_Especie, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jcb_Especie, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_Mascota_Alias, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_Mascota_Raza, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_Mascota_Pelo)
+                            .addComponent(jl_Mascota_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_Mascota_Peso, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jt_fecha)
+                            .addComponent(jtf_Mascota_Pelo)
+                            .addComponent(jt_raza)
+                            .addComponent(jt_alias)
+                            .addComponent(jtf_Mascota_PesoActual, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jrb_Mascota_M, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jrb_Mascota_F, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jl_Mascota_Especie, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jcb_Especie, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jl_Mascota_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
@@ -360,7 +407,7 @@ private MascotaData MascotaData;
         Cliente cliente= MascotaData.buscarCliente(id_cliente);
         
         if (cliente != null){
-            int codigo=Integer.parseInt(jt_Codigo.getText());
+            String codigo=jt_Codigo.getText();
             String alias=jt_alias.getText();
             String sexo="Desconocido";
             if(jrb_Mascota_M.isSelected() == true)
@@ -380,13 +427,24 @@ private MascotaData MascotaData;
             }
             String raza=jt_raza.getText();
             String color_pelo=jtf_Mascota_Pelo.getText();            
-            LocalDate fecha_nac= LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));            
-            Double peso_promedio=Double.parseDouble(jtf_Mascota_PesoPromedio.getText());
+            
+            LocalDate fecha_nac = null;
+            try{
+                fecha_nac = LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            }
+            catch(DateTimeParseException ex){
+               JOptionPane.showMessageDialog(null, "Fecha incorrecta");
+               return;
+            }            
+            
             Double peso_actual=Double.parseDouble(jtf_Mascota_PesoActual.getText());
          
-            Mascota mascota= new Mascota(cliente,codigo,alias,sexo, especie, raza, color_pelo,fecha_nac,peso_promedio,peso_actual);
+            Mascota mascota= new Mascota(cliente,codigo,alias,sexo, especie, raza, color_pelo,fecha_nac,peso_actual);            
             MascotaData.guardarMascota(mascota);
             jt_idMascota.setText(mascota.getId_mascota()+"");
+            jtf_Mascota_PesoPromedio.setText(Double.toString(mascota.getPeso_promedio()));
+            jt_idMascota.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "Guardado exitoso.");
             
            
         }
@@ -396,6 +454,7 @@ private MascotaData MascotaData;
     }//GEN-LAST:event_jb_guardarActionPerformed
 
     private void jb_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_limpiarActionPerformed
+     jt_idMascota.setEnabled(true);
      jt_idMascota.setText(""); 
      jt_idDueño.setText("");
      jt_Codigo.setText("");
@@ -426,7 +485,7 @@ private MascotaData MascotaData;
             if(mascota!=null){
                 jt_idMascota.setText(mascota.getId_mascota()+"");
                 jt_idDueño.setText(mascota.getCliente().getId_cliente()+"");
-                jt_Codigo.setText(Integer.toString(mascota.getCod_mascota()));
+                jt_Codigo.setText(mascota.getCod_mascota());
                 jt_alias.setText(mascota.getAlias());
                 
                 if(mascota.getSexo().equalsIgnoreCase("femenino")){
@@ -453,11 +512,13 @@ private MascotaData MascotaData;
                 jt_fecha.setText(mascota.getFecha_nac().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 jtf_Mascota_PesoActual.setText(Double.toString(mascota.getPeso_actual()));
                 jtf_Mascota_PesoPromedio.setText(Double.toString(mascota.getPeso_promedio()));
+                jt_idMascota.setEnabled(false);
                 
         }
-        else
+        else{
             JOptionPane.showMessageDialog(null, "No existe mascota con el ID ingresado.");    
-
+            jt_idMascota.setText("");
+            }
         }
         else
             JOptionPane.showMessageDialog(null, "Ingrese el ID de la mascota.");
@@ -467,8 +528,11 @@ private MascotaData MascotaData;
     private void jb_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_borrarActionPerformed
       int id=Integer.parseInt(jt_idMascota.getText());
       int resp = JOptionPane.showConfirmDialog(null, "Tambien se eliminaran las VISITAS que registra esta mascota. ¿Está seguro?");
-        if(resp == 0)
+        if(resp == 0){
             MascotaData.borrarMascota(id);       
+            JOptionPane.showMessageDialog(null, "Borrado exitoso.");
+            jb_limpiarActionPerformed(evt);
+        }
     }//GEN-LAST:event_jb_borrarActionPerformed
 
     private void jrb_Mascota_FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_Mascota_FActionPerformed
@@ -490,11 +554,11 @@ private MascotaData MascotaData;
     }//GEN-LAST:event_jt_idMascotaActionPerformed
 
     private void jb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarActionPerformed
-        if (!jt_idMascota.getText().equals("")){
+        
             int id_mascota=Integer.parseInt(jt_idMascota.getText());
             int id_cliente=Integer.parseInt(jt_idDueño.getText());
             Cliente cliente= MascotaData.buscarCliente(id_cliente);
-            int codigo=Integer.parseInt(jt_Codigo.getText());
+            String codigo=jt_Codigo.getText();
             String alias=jt_alias.getText();
             String sexo="Desconocido";
             if(jrb_Mascota_M.isSelected() == true)
@@ -515,18 +579,139 @@ private MascotaData MascotaData;
                 
             String raza=jt_raza.getText();
             String color_pelo=jtf_Mascota_Pelo.getText();
-            LocalDate fecha_nac= LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            Double peso_promedio=Double.parseDouble(jtf_Mascota_PesoPromedio.getText());
+            LocalDate fecha_nac = null;
+            try{
+                fecha_nac = LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            }
+            catch(DateTimeParseException ex){
+               JOptionPane.showMessageDialog(null, "Fecha incorrecta");
+               return;
+            }
             Double peso_actual=Double.parseDouble(jtf_Mascota_PesoActual.getText());
             
-            Mascota mascota= new Mascota(id_mascota,cliente,codigo,alias,sexo, especie, raza, color_pelo,fecha_nac,peso_promedio,peso_actual);
+            Mascota mascota= new Mascota(id_mascota,cliente,codigo,alias,sexo, especie, raza, color_pelo,fecha_nac,peso_actual);
             MascotaData.actualizarMascota(mascota);
+            JOptionPane.showMessageDialog(null, "Actualizacion exitosa.");
             
-          } 
-        else
-            JOptionPane.showMessageDialog(null, "Ingrese el ID de la mascota.");
+          
         
     }//GEN-LAST:event_jb_modificarActionPerformed
+
+    private void jt_idDueñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_idDueñoKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='\u0008') { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese un entero."); 
+               
+          } 
+    }//GEN-LAST:event_jt_idDueñoKeyTyped
+
+    private void jt_CodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_CodigoKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && !Character.isLetter(c) && c!='\u0008') { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Se aceptan solos digitos y letras consecutivas."); 
+               
+          } 
+    }//GEN-LAST:event_jt_CodigoKeyTyped
+
+    private void jt_aliasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_aliasKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(Character.isDigit(c) && c!='\u0008') { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo letras."); 
+               
+          } 
+    }//GEN-LAST:event_jt_aliasKeyTyped
+
+    private void jt_razaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_razaKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isLetter(c) && c!='\u0008') { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo letras."); 
+               
+          }
+    }//GEN-LAST:event_jt_razaKeyTyped
+
+    private void jtf_Mascota_PeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_Mascota_PeloKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isLetter(c) && c!='\u0008') { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo letras."); 
+               
+          }
+    }//GEN-LAST:event_jtf_Mascota_PeloKeyTyped
+
+    private void jt_fechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_fechaKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='/' && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_fechaKeyTyped
+
+    private void jtf_Mascota_PesoActualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_Mascota_PesoActualKeyTyped
+        char c=evt.getKeyChar(); 
+        
+       
+        
+          if(!Character.isDigit(c) && (c!='.' || jtf_Mascota_PesoActual.getText().contains(".")) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo numeros decimales."); 
+               
+          }
+    }//GEN-LAST:event_jtf_Mascota_PesoActualKeyTyped
+
+    private void jt_idMascotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_idMascotaKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_idMascotaKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;

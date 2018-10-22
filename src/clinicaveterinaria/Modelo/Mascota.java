@@ -17,7 +17,7 @@ import java.util.Date;
 public class Mascota {
     private int id_mascota=-1;
     private Cliente cliente;
-    private int cod_mascota;
+    private String cod_mascota;
     private String alias;
     private String sexo;
     private String especie;
@@ -32,7 +32,7 @@ public class Mascota {
       
     }
    
-    public Mascota(int id_mascota, Cliente cliente, int codigo, String alias, String sexo, String especie, String raza,String colorpelo, LocalDate fecha_nac, double pesoPromedio, double pesoActual) {
+    public Mascota(int id_mascota, Cliente cliente, String codigo, String alias, String sexo, String especie, String raza,String colorpelo, LocalDate fecha_nac, double pesoActual) {
         this.id_mascota = id_mascota;
         this.cliente = cliente;
         this.cod_mascota = codigo;
@@ -42,11 +42,11 @@ public class Mascota {
         this.raza = raza;
         this.color_pelo=colorpelo;
         this.fecha_nac = fecha_nac;
-        this.peso_promedio = pesoPromedio;
+        this.peso_promedio = 0;
         this.peso_actual = pesoActual;
     }
     
-    public Mascota(Cliente cliente, int codigo, String alias, String sexo, String especie, String raza,String colorpelo, LocalDate fecha_nac, double pesoPromedio, double pesoActual) {
+    public Mascota(Cliente cliente, String codigo, String alias, String sexo, String especie, String raza,String colorpelo, LocalDate fecha_nac, double pesoActual) {
         this.cliente = cliente;
         this.cod_mascota = codigo;
         this.alias = alias;
@@ -55,7 +55,7 @@ public class Mascota {
         this.raza = raza;
         this.color_pelo=colorpelo;
         this.fecha_nac = fecha_nac;
-        this.peso_promedio = pesoPromedio;
+        this.peso_promedio = 0;
         this.peso_actual = pesoActual;
     }
   
@@ -75,11 +75,11 @@ public class Mascota {
         this.cliente = cliente;
     }
 
-    public int getCod_mascota() {
+    public String getCod_mascota() {
         return cod_mascota;
     }
 
-    public void setCod_mascota(int codigo) {
+    public void setCod_mascota(String codigo) {
         this.cod_mascota = codigo;
     }
 
@@ -147,7 +147,7 @@ public class Mascota {
         this.peso_actual = pesoActual;
     }
     
-    /*public void PesoPromedio(Mascota mascota){ //este metodo debe ir en VisitaDeAtencion
+    /*public void PromediarPeso(Mascota mascota){ //este metodo debe ir en VisitaDeAtencion
         if(mascota.getPeso_promedio() == 0)
             mascota.setPeso_promedio(mascota.getPeso_actual());
         else

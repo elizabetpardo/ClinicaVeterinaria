@@ -192,35 +192,33 @@
                               <Component id="jt_idDueño" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jl_Mascota_Alias" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="jl_sexo" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="jl_Mascota_Raza" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="jl_Mascota_Pelo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jl_Mascota_Fecha" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                                  <Component id="jl_Mascota_Peso" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jt_fecha" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtf_Mascota_Pelo" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jt_raza" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jt_alias" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtf_Mascota_PesoActual" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jrb_Mascota_M" min="-2" pref="83" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jrb_Mascota_F" min="-2" pref="81" max="-2" attributes="0"/>
-                                  </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jl_Mascota_Alias" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="jl_sexo" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="jl_Mascota_Raza" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="jl_Mascota_Pelo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jl_Mascota_Fecha" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
+                              <Component id="jl_Mascota_Peso" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jt_fecha" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtf_Mascota_Pelo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jt_raza" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jt_alias" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtf_Mascota_PesoActual" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jrb_Mascota_M" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jrb_Mascota_F" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jl_Mascota_Especie" min="-2" pref="52" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jcb_Especie" min="-2" pref="164" max="-2" attributes="0"/>
-                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jl_Mascota_Especie" min="-2" pref="52" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jcb_Especie" min="-2" pref="164" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jl_Mascota_Codigo" min="-2" pref="69" max="-2" attributes="0"/>
@@ -310,6 +308,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_idDue&#xf1;o">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_idDue&#xf1;oKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_idMascota">
           <Properties>
@@ -319,6 +320,7 @@
         <Component class="javax.swing.JTextField" name="jt_idMascota">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jt_idMascotaActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_idMascotaKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_Mascota_Alias">
@@ -329,6 +331,7 @@
         <Component class="javax.swing.JTextField" name="jt_alias">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jt_aliasActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_aliasKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_sexo">
@@ -363,6 +366,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_raza">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_razaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_Mascota_Pelo">
           <Properties>
@@ -370,6 +376,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtf_Mascota_Pelo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtf_Mascota_PeloKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_Mascota_Fecha">
           <Properties>
@@ -377,6 +386,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_fecha">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_fechaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_Mascota_Peso">
           <Properties>
@@ -384,6 +396,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtf_Mascota_PesoActual">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtf_Mascota_PesoActualKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jcb_Especie">
           <Properties>
@@ -410,6 +425,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_Codigo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_CodigoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_Mascota_Peso1">
           <Properties>
@@ -417,6 +435,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtf_Mascota_PesoPromedio">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

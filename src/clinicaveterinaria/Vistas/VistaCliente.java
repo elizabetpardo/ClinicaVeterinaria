@@ -80,6 +80,12 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         jp_cliente.setBackground(new java.awt.Color(255, 255, 255));
         jp_cliente.setName(""); // NOI18N
 
+        j_idCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                j_idClienteKeyTyped(evt);
+            }
+        });
+
         jl_id.setText("ID");
 
         jt_dni.addActionListener(new java.awt.event.ActionListener() {
@@ -87,16 +93,51 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                 jt_dniActionPerformed(evt);
             }
         });
+        jt_dni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_dniKeyTyped(evt);
+            }
+        });
 
         jLabel1.setText("APELLIDO");
 
+        jt_apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_apellidoKeyTyped(evt);
+            }
+        });
+
         jl_nombre.setText("NOMBRE");
+
+        jt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_nombreKeyTyped(evt);
+            }
+        });
 
         jl_direccion.setText("DIRECCION");
 
+        jt_direccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_direccionKeyTyped(evt);
+            }
+        });
+
         jl_telefono.setText("TELEFONO");
 
+        jt_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_telefonoKeyTyped(evt);
+            }
+        });
+
         jl_personaAlt.setText("PERSONA ALTERNATIVA");
+
+        jt_personaAlternativa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_personaAlternativaKeyTyped(evt);
+            }
+        });
 
         jl_dni.setText("DNI");
 
@@ -270,11 +311,15 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         String personaAlternativa=jt_personaAlternativa.getText();
          
         Cliente cliente= new Cliente(dni,apellido,nombre,direccion,telefono,personaAlternativa);
-        clienteData.guardarCliente(cliente);
-         j_idCliente.setText(cliente.getId_cliente()+"");
+        clienteData.guardarCliente(cliente);       
+        j_idCliente.setText(cliente.getId_cliente()+"");
+        j_idCliente.setEnabled(false);
+        JOptionPane.showMessageDialog(null, "Guardado exitoso.");
+        
     }//GEN-LAST:event_jb_guardarClienteActionPerformed
 
     private void jb_limpiarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_limpiarClienteActionPerformed
+     j_idCliente.setEnabled(true);
      j_idCliente.setText(""); 
      jt_dni.setText("");
      jt_apellido.setText("");
@@ -293,7 +338,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jt_dniActionPerformed
 
     private void jb_buscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarClienteActionPerformed
-        
+        if(!j_idCliente.getText().equals("")){
         int id=Integer.parseInt(j_idCliente.getText());
         Cliente cliente=clienteData.buscarCliente(id);
         if(cliente!=null){
@@ -304,8 +349,17 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                 jt_direccion.setText(cliente.getDireccion());
                 jt_telefono.setText(cliente.getTelefono());
                 jt_personaAlternativa.setText(cliente.getPersona_alternativa());
-        }     
-               
+                j_idCliente.setEnabled(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No existe cliente con el ID ingresado.");    
+            j_idCliente.setText("");
+            }
+            
+        }   
+        else
+            JOptionPane.showMessageDialog(null, "Ingrese el ID del cliente.");
+            
     }//GEN-LAST:event_jb_buscarClienteActionPerformed
 
     private void jb_borrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_borrarClienteActionPerformed
@@ -323,6 +377,8 @@ public class VistaCliente extends javax.swing.JInternalFrame {
             }
         
             clienteData.borrarCliente(id_cliente);
+            JOptionPane.showMessageDialog(null, "Borrado exitoso.");
+            jb_limpiarClienteActionPerformed(evt);
         }
         else
             JOptionPane.showMessageDialog(null, "El cliente no existe.");
@@ -330,7 +386,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jb_borrarClienteActionPerformed
 
     private void jb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarActionPerformed
-         if (j_idCliente.getText()!=null){
+         
              
             int dni=Integer.parseInt(jt_dni.getText().trim());
             String apellido=jt_apellido.getText();
@@ -343,9 +399,115 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
              Cliente cliente=new Cliente(Integer.parseInt(j_idCliente.getText()),dni,apellido,nombre,direccion,telefono,personaAlternativa);
              clienteData.actualizarCliente(cliente);
-    }
+             JOptionPane.showMessageDialog(null, "Actualizacion exitosa.");
+    
         
     }//GEN-LAST:event_jb_modificarActionPerformed
+
+    private void j_idClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j_idClienteKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_j_idClienteKeyTyped
+
+    private void jt_dniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_dniKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_dniKeyTyped
+
+    private void jt_apellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_apellidoKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isLetter(c) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_apellidoKeyTyped
+
+    private void jt_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_nombreKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isLetter(c) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_nombreKeyTyped
+
+    private void jt_direccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_direccionKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && !Character.isLetter(c) && c!='\u0008' && c!='\u0020') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_direccionKeyTyped
+
+    private void jt_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_telefonoKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='\u0008' && c!='\u002D') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_telefonoKeyTyped
+
+    private void jt_personaAlternativaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_personaAlternativaKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isLetter(c) && c!='\u0008' && c!='\u0020') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_personaAlternativaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

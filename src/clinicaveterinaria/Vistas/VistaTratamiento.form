@@ -179,6 +179,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_idTratamiento">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_idTratamientoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_codTratamiento">
           <Properties>
@@ -186,6 +189,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_codTratamiento">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_codTratamientoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_tipo">
           <Properties>
@@ -223,6 +229,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_importe">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_importeKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_activo">
           <Properties>

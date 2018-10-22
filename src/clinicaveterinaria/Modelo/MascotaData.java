@@ -41,7 +41,7 @@ public class MascotaData {
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, mascota.getCliente().getId_cliente());
-            statement.setInt(2, mascota.getCod_mascota());
+            statement.setString(2, mascota.getCod_mascota());
             statement.setString(3, mascota.getAlias());
             statement.setString(4, mascota.getSexo());
             statement.setString(5, mascota.getEspecie());
@@ -83,7 +83,7 @@ public class MascotaData {
                Cliente x=buscarCliente(resultSet.getInt("id_cliente"));   
                mascota.setCliente(x);
                 
-                mascota.setCod_mascota(resultSet.getInt("cod_mascota"));
+                mascota.setCod_mascota(resultSet.getString("cod_mascota"));
                 mascota.setAlias(resultSet.getString("alias"));
                 mascota.setSexo(resultSet.getString("sexo"));
                 mascota.setEspecie(resultSet.getString("especie"));
@@ -142,7 +142,7 @@ public class MascotaData {
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, mascota.getCliente().getId_cliente());
-            statement.setInt(2, mascota.getCod_mascota());
+            statement.setString(2, mascota.getCod_mascota());
             statement.setString(3, mascota.getAlias());
             statement.setString(4, mascota.getSexo());
             statement.setString(5, mascota.getEspecie());
@@ -183,7 +183,7 @@ public class MascotaData {
                 Cliente x=buscarCliente(resultSet.getInt("id_cliente"));   
                 mascota.setCliente(x);
                 
-                mascota.setCod_mascota(resultSet.getInt("cod_mascota"));
+                mascota.setCod_mascota(resultSet.getString("cod_mascota"));
                 mascota.setAlias(resultSet.getString("alias"));
                 mascota.setSexo(resultSet.getString("sexo"));
                 mascota.setEspecie(resultSet.getString("especie"));
@@ -233,7 +233,7 @@ public class MascotaData {
                 Cliente x=buscarCliente(id_cliente);    
                 mascota.setCliente(x);
                 
-                mascota.setCod_mascota(resultSet.getInt("cod_mascota"));
+                mascota.setCod_mascota(resultSet.getString("cod_mascota"));
                 mascota.setAlias(resultSet.getString("alias"));
                 mascota.setSexo(resultSet.getString("sexo"));
                 mascota.setEspecie(resultSet.getString("especie"));
@@ -272,7 +272,7 @@ public class MascotaData {
                 Cliente x=buscarCliente(resultSet.getInt("id_mascota"));    
                 mascota.setCliente(x);
                 
-                mascota.setCod_mascota(resultSet.getInt("cod_mascota"));
+                mascota.setCod_mascota(resultSet.getString("cod_mascota"));
                 mascota.setAlias(resultSet.getString("alias"));
                 mascota.setSexo(resultSet.getString("sexo"));
                 mascota.setEspecie(resultSet.getString("especie"));

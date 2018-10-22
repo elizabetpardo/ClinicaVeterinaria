@@ -9,6 +9,7 @@ import clinicaveterinaria.Modelo.TratamientoData;
 import clinicaveterinaria.Modelo.Conexion;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 public class VistaTratamiento extends javax.swing.JInternalFrame {
  
  private TratamientoData tratamientoData;
@@ -66,7 +67,19 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
 
         jl_idTratamiento.setText("ID");
 
+        jt_idTratamiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_idTratamientoKeyTyped(evt);
+            }
+        });
+
         jl_codTratamiento.setText("CODIGO ");
+
+        jt_codTratamiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_codTratamientoKeyTyped(evt);
+            }
+        });
 
         jl_tipo.setText("TIPO");
 
@@ -80,6 +93,12 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
         jl_descripcion.setText("DESCRIPCIÓN");
 
         jl_importe.setText("IMPORTE");
+
+        jt_importe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_importeKeyTyped(evt);
+            }
+        });
 
         jl_activo.setText("ACTIVO");
 
@@ -245,6 +264,7 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jb_cancelarActionPerformed
 
     private void jb_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_limpiarActionPerformed
+       jt_idTratamiento.setEnabled(true);
        jt_idTratamiento.setText("");
        jt_codTratamiento.setText("");
        jta_descripcion.setText("");
@@ -262,11 +282,14 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
         
         Tratamiento tratamiento= new Tratamiento(codigo, tipo, descripcion, importe, activo);
         tratamientoData.guardarTratamiento(tratamiento);
-         jt_idTratamiento.setText(tratamiento.getId_tratamiento()+"");
+        jt_idTratamiento.setText(tratamiento.getId_tratamiento()+"");
+        jt_idTratamiento.setEnabled(false);
+        JOptionPane.showMessageDialog(null, "Guardado exitoso.");
     }//GEN-LAST:event_jb_guardarActionPerformed
 
     private void jb_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_BuscarActionPerformed
-       int id=Integer.parseInt(jt_idTratamiento.getText());
+      if(!jt_idTratamiento.getText().equals("")){
+        int id=Integer.parseInt(jt_idTratamiento.getText());
         Tratamiento tratamiento= tratamientoData.buscarTratamiento(id);
         if(tratamiento!=null){
                 jt_idTratamiento.setText(tratamiento.getId_tratamiento()+"");
@@ -275,7 +298,16 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
                 jta_descripcion.setText(tratamiento.getDescripcion());
                 jt_importe.setText(Double.toString(tratamiento.getImporte()));
                 jcb_Activo.setSelected(tratamiento.getActivo());
-       }         
+                jt_idTratamiento.setEnabled(false);
+       }
+       else{
+            JOptionPane.showMessageDialog(null, "No existe tratamiento con el ID ingresado.");    
+            jt_idTratamiento.setText("");
+            }
+            
+        }   
+        else
+            JOptionPane.showMessageDialog(null, "Ingrese el ID del tratamiento.");
                 
     }//GEN-LAST:event_jb_BuscarActionPerformed
 
@@ -292,17 +324,72 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
             
              Tratamiento tratamiento=new Tratamiento(Integer.parseInt(jt_idTratamiento.getText()),codigo, tipo, descripcion, importe, activo );
              tratamientoData.actualizarTratamiento(tratamiento);
+             JOptionPane.showMessageDialog(null, "Actualizacion exitosa.");
           }   
     }//GEN-LAST:event_jb_modificarActionPerformed
 
     private void jb_BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_BorrarActionPerformed
-       int id=Integer.parseInt(jt_idTratamiento.getText());
-        tratamientoData.borrarTratamiento(id);
+        int id=Integer.parseInt(jt_idTratamiento.getText());
+        
+        if(tratamientoData.buscarTratamiento(id) != null){
+            tratamientoData.borrarTratamiento(id);
+            JOptionPane.showMessageDialog(null, "Borrado exitoso.");
+            jb_limpiarActionPerformed(evt);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "El tratamiento no existe.");
+            
     }//GEN-LAST:event_jb_BorrarActionPerformed
 
     private void jcbx_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbx_tipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbx_tipoActionPerformed
+
+    private void jt_idTratamientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_idTratamientoKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_idTratamientoKeyTyped
+
+    private void jt_codTratamientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_codTratamientoKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && !Character.isLetter(c) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Se aceptan solos digitos y letras consecutivas."); 
+               
+          }
+    }//GEN-LAST:event_jt_codTratamientoKeyTyped
+
+    private void jt_importeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_importeKeyTyped
+        char c=evt.getKeyChar(); 
+        
+       
+        
+          if(!Character.isDigit(c) && (c!='.' || jt_importe.getText().contains(".")) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo numeros decimales."); 
+               
+          }
+    }//GEN-LAST:event_jt_importeKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
