@@ -18,28 +18,48 @@ public class VisitaDeAtencion {
    private Tratamiento tratamiento;
    private LocalDate fecha;
    private String detalle;
+   private double peso_actual;
+   private double peso_promedio;
 
     public VisitaDeAtencion(){}
-      public VisitaDeAtencion(int id,int idMascota,int idTratamiento, LocalDate fecha, String detalle) {
-        this.id_visita=id;
-        this.mascota.setId_mascota(idMascota);
-        this.tratamiento.setId_tratamiento(idTratamiento); 
-        this.fecha = fecha;
-        this.detalle = detalle;
-    }
-    public VisitaDeAtencion(int idMascota,int idTratamiento, LocalDate fecha, String detalle) {
-        this.mascota.setId_mascota(idMascota);
-        this.tratamiento.setId_tratamiento(idTratamiento); 
-        this.fecha = fecha;
-        this.detalle = detalle;
-    }
+  
     
-    public VisitaDeAtencion(Mascota mascota, Tratamiento tratamiento, LocalDate fecha, String detalle) {
+
+    public VisitaDeAtencion(int id,Mascota mascota, Tratamiento tratamiento, LocalDate fecha, String detalle, double peso_actual, double peso_promedio) {
+        this.id_visita=id;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
         this.fecha = fecha;
         this.detalle = detalle;
+        this.peso_actual = peso_actual;
+        this.peso_promedio = peso_promedio;
     }
+
+    public VisitaDeAtencion(Mascota mascota, Tratamiento tratamiento, LocalDate fecha, String detalle, double peso_actual, double peso_promedio) {
+        this.mascota = mascota;
+        this.tratamiento = tratamiento;
+        this.fecha = fecha;
+        this.detalle = detalle;
+        this.peso_actual = peso_actual;
+        this.peso_promedio = peso_promedio;
+    }
+
+    public double getPeso_actual() {
+        return peso_actual;
+    }
+
+    public void setPeso_actual(double peso_actual) {
+        this.peso_actual = peso_actual;
+    }
+
+    public double getPeso_promedio() {
+        return peso_promedio;
+    }
+
+    public void setPeso_promedio(double peso_promedio) {
+        this.peso_promedio = peso_promedio;
+    }
+    
 
     public int getId_visita() {
         return id_visita;

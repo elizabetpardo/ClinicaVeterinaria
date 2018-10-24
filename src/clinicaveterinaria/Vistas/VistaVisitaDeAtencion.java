@@ -8,12 +8,17 @@ package clinicaveterinaria.vistas;
 
 import clinicaveterinaria.Modelo.VisitasData;
 import clinicaveterinaria.Modelo.Conexion;
+import clinicaveterinaria.Modelo.Mascota;
+import clinicaveterinaria.Modelo.MascotaData;
+import clinicaveterinaria.Modelo.Tratamiento;
+import clinicaveterinaria.Modelo.TratamientoData;
 import clinicaveterinaria.Modelo.VisitaDeAtencion;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +28,8 @@ import java.util.logging.Logger;
  */
 public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
   private VisitasData visitasData;
- private Conexion conexion;
+  private MascotaData mascotaData;
+  private Conexion conexion;
     /**
      * Creates new form VistaVisitasDeAtencion
      */
@@ -60,6 +66,10 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jta_detalle = new javax.swing.JTextArea();
+        jt_pesoActual = new javax.swing.JTextField();
+        jt_pesoPromedio = new javax.swing.JTextField();
+        jl_pesoActual = new javax.swing.JLabel();
+        jl_pesoPromedio = new javax.swing.JLabel();
         jb_buscar = new javax.swing.JButton();
         jb_borrar = new javax.swing.JButton();
         jb_guardar = new javax.swing.JButton();
@@ -97,26 +107,40 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
         jta_detalle.setRows(5);
         jScrollPane1.setViewportView(jta_detalle);
 
+        jl_pesoActual.setText("PESO ACTUAL");
+
+        jl_pesoPromedio.setText("PESO PROMEDIO");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jl_idVisita)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jl_fecha)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jt_idVisita, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                        .addComponent(jt_idMascota)
-                        .addComponent(jt_idTratamiento)
-                        .addComponent(jt_fecha))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_idVisita)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jl_fecha)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jt_idVisita, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                                .addComponent(jt_idMascota)
+                                .addComponent(jt_idTratamiento)
+                                .addComponent(jt_fecha, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_pesoActual)
+                            .addComponent(jl_pesoPromedio))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jt_pesoActual)
+                            .addComponent(jt_pesoPromedio, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))))
                 .addGap(27, 27, 27))
         );
         jPanel1Layout.setVerticalGroup(
@@ -142,7 +166,15 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jt_pesoActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_pesoActual))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jt_pesoPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_pesoPromedio))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jb_buscar.setText("Buscar");
@@ -201,18 +233,19 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jb_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jb_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jb_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jb_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(43, 43, 43))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(39, 39, 39)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jb_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jb_borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jb_modificar))))))
-                .addGap(72, 72, 72))
+                                    .addComponent(jb_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))))))
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,21 +254,21 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jb_buscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jb_borrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jb_modificar)))
-                .addGap(27, 27, 27)
+                        .addComponent(jb_modificar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_guardar)
                     .addComponent(jb_limpiar)
                     .addComponent(jb_cancelar))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,6 +284,8 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
         jt_idTratamiento.setText("");
         jt_fecha.setText("");
         jta_detalle.setText("");
+        jt_pesoActual.setText("");
+        jt_pesoPromedio.setText("");
     }//GEN-LAST:event_jb_limpiarActionPerformed
 
     private void jb_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cancelarActionPerformed
@@ -275,21 +310,40 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                 jt_idVisita.setText(visita.getId_visita()+"");
                 jt_idMascota.setText(visita.getMascota().getId_mascota()+"");
                 jt_idTratamiento.setText(visita.getTratamiento().getId_tratamiento()+"");
-                jt_fecha.setText(visita.getFecha().toString());
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String fecha=visita.getFecha().format(format);
+                jt_fecha.setText(fecha);
                 jta_detalle.setText(visita.getDetalle());
+                jt_pesoActual.setText(Double.toString(visita.getPeso_actual()));
+                
+                jt_pesoPromedio.setText(Double.toString(visita.getPeso_promedio()));
     }//GEN-LAST:event_jb_buscarActionPerformed
     }
     private void jb_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_guardarActionPerformed
-       
-        
+                  
+      
         int idMascota= Integer.parseInt(jt_idMascota.getText());
+        Mascota mascota = visitasData.buscarMascota(idMascota);
+      
         int idTratamiento=Integer.parseInt(jt_idTratamiento.getText());
-        LocalDate fecha= LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        String detalle=jt_fecha.getText();
+        Tratamiento tratamiento = visitasData.buscarTratamiento(idTratamiento);
+          if(mascota != null && tratamiento != null)
+        {
+          LocalDate fecha= LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+         String detalle=jta_detalle.getText();
+         double pesoActual=Double.parseDouble(jt_pesoActual.getText());
+         mascota.setPeso_actual(pesoActual);
         
-        VisitaDeAtencion visita= new VisitaDeAtencion(idMascota,idTratamiento,fecha,detalle);
-        visitasData.guardarVisita(visita);
-        jt_idVisita.setText(visita.getId_visita()+"");
+   
+         double pesoPromedio=mascota.getPeso_promedio();
+          jt_pesoPromedio.setText(Double.toString(pesoPromedio));
+         visitasData.PromediarPeso(mascota);
+        
+         VisitaDeAtencion visita= new VisitaDeAtencion(mascota,tratamiento,fecha,detalle,pesoActual,pesoPromedio);
+         
+         visitasData.guardarVisita(visita);
+         jt_idVisita.setText(visita.getId_visita()+"");
+         }
     }//GEN-LAST:event_jb_guardarActionPerformed
 
     private void jb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarActionPerformed
@@ -297,11 +351,21 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
        if (jt_idVisita.getText()!=null){
            
            int idMascota=Integer.parseInt(jt_idMascota.getText());
+            Mascota mascota = visitasData.buscarMascota(idMascota);
+          
            int idTratamiento=Integer.parseInt(jt_idTratamiento.getText());
+             Tratamiento tratamiento = visitasData.buscarTratamiento(idTratamiento);
+           
            LocalDate fecha=LocalDate.parse(jt_fecha.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
            String detalle=jta_detalle.getText();
            
-        VisitaDeAtencion visita=new VisitaDeAtencion(Integer.parseInt(jt_idVisita.getText()),idMascota,idTratamiento,fecha,detalle);
+          double pesoActual=Double.parseDouble(jt_pesoActual.getText());
+          mascota.setPeso_actual(pesoActual);
+          
+          double pesoPromedio=mascota.getPeso_promedio();
+         jt_pesoPromedio.setText(Double.toString(pesoPromedio));
+           
+        VisitaDeAtencion visita=new VisitaDeAtencion(Integer.parseInt(jt_idVisita.getText()),mascota,tratamiento,fecha,detalle,pesoActual,pesoPromedio);
              visitasData.actualizarVisita(visita);
     }//GEN-LAST:event_jb_modificarActionPerformed
     }
@@ -321,10 +385,14 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
     private javax.swing.JButton jb_modificar;
     private javax.swing.JLabel jl_fecha;
     private javax.swing.JLabel jl_idVisita;
+    private javax.swing.JLabel jl_pesoActual;
+    private javax.swing.JLabel jl_pesoPromedio;
     private javax.swing.JTextField jt_fecha;
     private javax.swing.JTextField jt_idMascota;
     private javax.swing.JTextField jt_idTratamiento;
     private javax.swing.JTextField jt_idVisita;
+    private javax.swing.JTextField jt_pesoActual;
+    private javax.swing.JTextField jt_pesoPromedio;
     private javax.swing.JTextArea jta_detalle;
     // End of variables declaration//GEN-END:variables
 }

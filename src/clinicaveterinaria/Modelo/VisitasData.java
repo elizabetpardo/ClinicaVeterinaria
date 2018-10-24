@@ -21,6 +21,8 @@ import java.util.List;
 public class VisitasData {
      private Connection connection = null;
      private Conexion conexion;
+     int cantVisitas=0;
+     double pesos;
      
       public VisitasData(Conexion conexion) {
         try {
@@ -33,12 +35,14 @@ public class VisitasData {
       public void guardarVisita(VisitaDeAtencion visita){
         try {
             
-            String sql = "INSERT INTO visitadeatencion (id_mascota, id_tratamiento,fecha,detalle) VALUES ( ? , ? , ? ,?);";
+            String sql = "INSERT INTO visitadeatencion (id_mascota, id_tratamiento,fecha,detalle,peso_actual,peso_promedio) VALUES ( ? , ? , ? ,? ,? ,?);";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, visita.getMascota().getId_mascota());
             statement.setInt(2, visita.getTratamiento().getId_tratamiento());
             statement.setDate(3, Date.valueOf(visita.getFecha()));
+            statement.setDouble(4, visita.getPeso_actual());
+            statement.setDouble(5, visita.getPeso_promedio());
             statement.setString(4,visita.getDetalle());
             
             
@@ -111,10 +115,18 @@ public class VisitasData {
                 visita.setTratamiento(t);
                 visita.setFecha(resultSet.getDate("fecha").toLocalDate());
                 visita.setDetalle(resultSet.getString("detalle"));
+                visita.setPeso_actual(resultSet.getDouble("peso_actual"));
+                visita.setPeso_promedio(resultSet.getDouble("peso_promedio"));
+                 
+                
+              
+              visitas.add(visita);
+              cantVisitas=visitas.size();
+              if(cantVisitas<=10){
+                pesos+=visita.getPeso_actual();}
                
-
-                visitas.add(visita);
-            }      
+            }    
+             
             statement.close();
         } catch (SQLException ex) {
             System.out.println("Error al obtener las visitas de atención: " + ex.getMessage());
@@ -123,6 +135,16 @@ public class VisitasData {
         
         return visitas;
     }
+      public void PromediarPeso(Mascota mascota){
+          obtenerVisitasXMascota(mascota.getId_mascota());
+          double promedio;
+        if(mascota.getPeso_promedio() == 0)
+           mascota.setPeso_promedio(mascota.getPeso_actual());
+        else{
+          mascota.setPeso_promedio(pesos/cantVisitas);}
+        
+    } 
+    
    /*   public List<VisitaDeAtencion> obtenerVisitasMismoTratamiento(int tipo){
             List<VisitaDeAtencion> visitas = new ArrayList<VisitaDeAtencion>();
             
@@ -175,10 +197,10 @@ public class VisitasData {
     
     }
       public void actualizarVisita(VisitaDeAtencion visita)
-      {
+      { Mascota mascota = visita.getMascota();
          try {
             
-            String sql = "UPDATE visitadeatencion SET id_mascota = ?, id_tratamiento = ?, fecha = ?, detalle = ? WHERE id_visita = ?;";
+            String sql = "UPDATE visitadeatencion SET id_mascota = ?, id_tratamiento = ?, fecha = ?, detalle = ?,peso_actual= ?, peso_promedio = ? WHERE id_visita = ?;";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
@@ -186,12 +208,16 @@ public class VisitasData {
             statement.setInt(2, visita.getTratamiento().getId_tratamiento());
             statement.setDate(3,Date.valueOf(visita.getFecha()));
             statement.setString(4, visita.getDetalle());
-            statement.setInt(5, visita.getId_visita());
+            statement.setDouble(5,visita.getPeso_actual());
+            statement.setDouble(6, visita.getPeso_promedio());
+            statement.setInt(7, visita.getId_visita());
+            
             statement.executeUpdate();
             
           
             statement.close();
-    
+            
+            
         } catch (SQLException ex) {
             System.out.println("Error al actualizar una visita de atención: " + ex.getMessage());
         }
@@ -222,6 +248,8 @@ public class VisitasData {
                 
                 visita.setFecha(resultSet.getDate("fecha").toLocalDate());
                 visita.setDetalle(resultSet.getString("detalle"));
+                visita.setPeso_actual(resultSet.getDouble("peso_actual"));
+                visita.setPeso_promedio(resultSet.getDouble("peso_promedio"));
                
                 
             }      
