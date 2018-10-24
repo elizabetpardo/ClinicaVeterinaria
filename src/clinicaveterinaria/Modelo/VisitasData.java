@@ -41,9 +41,10 @@ public class VisitasData {
             statement.setInt(1, visita.getMascota().getId_mascota());
             statement.setInt(2, visita.getTratamiento().getId_tratamiento());
             statement.setDate(3, Date.valueOf(visita.getFecha()));
-            statement.setDouble(4, visita.getPeso_actual());
-            statement.setDouble(5, visita.getPeso_promedio());
             statement.setString(4,visita.getDetalle());
+            statement.setDouble(5, visita.getPeso_actual());
+            statement.setDouble(6, visita.getPeso_promedio());
+            
             
             
             statement.executeUpdate();
