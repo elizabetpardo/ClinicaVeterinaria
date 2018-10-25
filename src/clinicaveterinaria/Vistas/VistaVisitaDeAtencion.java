@@ -326,6 +326,8 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                 jt_fecha.setText(fecha);
                 jta_detalle.setText(visita.getDetalle());
                 jt_pesoActual.setText(Double.toString(visita.getPeso_actual()));
+                double prom=visitasData.PromediarPeso(visita.getMascota());
+                visita.setPeso_promedio(prom);
                 jt_pesoPromedio.setText(Double.toString(visita.getPeso_promedio()));}
              else
              {

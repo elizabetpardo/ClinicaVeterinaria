@@ -21,8 +21,7 @@ import java.util.List;
 public class VisitasData {
      private Connection connection = null;
      private Conexion conexion;
-     int cantVisitas=0;
-     double pesos;
+     
      
       public VisitasData(Conexion conexion) {
         try {
@@ -122,9 +121,6 @@ public class VisitasData {
                 
               
               visitas.add(visita);
-              cantVisitas=visitas.size();
-              if(cantVisitas<=10){
-                pesos+=visita.getPeso_actual();}
                
             }    
              
@@ -136,19 +132,32 @@ public class VisitasData {
         
         return visitas;
     }
-      public void PromediarPeso(Mascota mascota){
+      public double PromediarPeso(Mascota mascota){
+          int cantVisitas=0;
+          int cant=0;
+          double pesos = 0;
+          double promedio=0;
           cantVisitas=obtenerVisitasXMascota(mascota.getId_mascota()).size();
           List<VisitaDeAtencion> visitas = new ArrayList<VisitaDeAtencion>();
           visitas=obtenerVisitasXMascota(mascota.getId_mascota());
           
-          for(int i=0; i < cantVisitas ;i++){
-              if(visitas.get(i).getPeso_promedio() == 0)
-                  visitas.get(i).setPeso_promedio(visitas.get(i).getPeso_actual());
-              else
-                  visitas.get(i).setPeso_promedio(pesos/cantVisitas);
-          }
-      
-        
+         
+             for(int i=0; i < cantVisitas ;i++){
+             
+                 if(visitas.get(i).getPeso_promedio()==0 && visitas.get(i).getPeso_actual()!=0)
+                 {
+                     promedio=visitas.get(i).getPeso_actual();
+                 }
+                 else
+                 {
+                   pesos+=visitas.get(i).getPeso_actual();
+                   cant+=1;
+                   promedio=pesos/cant;
+                 }
+             
+             }
+          
+        return promedio;
     } 
     
    /*   public List<VisitaDeAtencion> obtenerVisitasMismoTratamiento(int tipo){
