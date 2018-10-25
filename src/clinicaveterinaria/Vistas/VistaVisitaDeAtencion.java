@@ -21,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -295,18 +296,28 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
     private void jb_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_borrarActionPerformed
         
         int idVisita=Integer.parseInt(jt_idVisita.getText());
+       
+         if(idVisita != 0){
         visitasData.borrarVisita(idVisita);
-        
+         JOptionPane.showMessageDialog(null, "Borrado exitoso.");
+            jb_limpiarActionPerformed(evt);
+         }
+         else
+         {JOptionPane.showMessageDialog(null, "Visita Inexistente .");
+         }
         
         
     }//GEN-LAST:event_jb_borrarActionPerformed
 
     private void jb_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarActionPerformed
        
-        int id=Integer.parseInt(jt_idVisita.getText());
-        VisitaDeAtencion visita=visitasData.buscarVisita(id);
+        if(!jt_idVisita.getText().equals("")){
+            
+           int id=Integer.parseInt(jt_idVisita.getText());
+           VisitaDeAtencion visita=visitasData.buscarVisita(id);
+            
+            if(visita.getMascota() != null && visita.getTratamiento() != null){
         
-        if(visita!=null){
                 jt_idVisita.setText(visita.getId_visita()+"");
                 jt_idMascota.setText(visita.getMascota().getId_mascota()+"");
                 jt_idTratamiento.setText(visita.getTratamiento().getId_tratamiento()+"");
@@ -315,9 +326,21 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                 jt_fecha.setText(fecha);
                 jta_detalle.setText(visita.getDetalle());
                 jt_pesoActual.setText(Double.toString(visita.getPeso_actual()));
+                jt_pesoPromedio.setText(Double.toString(visita.getPeso_promedio()));}
+             else
+             {
+             JOptionPane.showMessageDialog(null, "No existe mascota con el ID ingresado.");    
+              jt_idMascota.setText("");
+              }
                 
-                jt_pesoPromedio.setText(Double.toString(visita.getPeso_promedio()));
     }//GEN-LAST:event_jb_buscarActionPerformed
+
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Ingrese el ID de la mascota.");
+        }
+    
+    
     }
     private void jb_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_guardarActionPerformed
                   
@@ -343,7 +366,13 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
          
          visitasData.guardarVisita(visita);
          jt_idVisita.setText(visita.getId_visita()+"");
+         jb_buscarActionPerformed(evt);
+         JOptionPane.showMessageDialog(null, "Guardado exitoso.");
          }
+          else
+          {
+           JOptionPane.showMessageDialog(null, "Error al guardar visita de atención.");
+          }
     }//GEN-LAST:event_jb_guardarActionPerformed
 
     private void jb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarActionPerformed
@@ -367,7 +396,12 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
            
         VisitaDeAtencion visita=new VisitaDeAtencion(Integer.parseInt(jt_idVisita.getText()),mascota,tratamiento,fecha,detalle,pesoActual,pesoPromedio);
              visitasData.actualizarVisita(visita);
+        JOptionPane.showMessageDialog(null, "Actualizacion exitosa.");
     }//GEN-LAST:event_jb_modificarActionPerformed
+       else
+       {
+          JOptionPane.showMessageDialog(null, "No se pudo actualizar la visita.");
+       }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -137,12 +137,17 @@ public class VisitasData {
         return visitas;
     }
       public void PromediarPeso(Mascota mascota){
-          obtenerVisitasXMascota(mascota.getId_mascota());
-          double promedio;
-        if(mascota.getPeso_promedio() == 0)
-           mascota.setPeso_promedio(mascota.getPeso_actual());
-        else{
-          mascota.setPeso_promedio(pesos/cantVisitas);}
+          cantVisitas=obtenerVisitasXMascota(mascota.getId_mascota()).size();
+          List<VisitaDeAtencion> visitas = new ArrayList<VisitaDeAtencion>();
+          visitas=obtenerVisitasXMascota(mascota.getId_mascota());
+          
+          for(int i=0; i < cantVisitas ;i++){
+              if(visitas.get(i).getPeso_promedio() == 0)
+                  visitas.get(i).setPeso_promedio(visitas.get(i).getPeso_actual());
+              else
+                  visitas.get(i).setPeso_promedio(pesos/cantVisitas);
+          }
+      
         
     } 
     
