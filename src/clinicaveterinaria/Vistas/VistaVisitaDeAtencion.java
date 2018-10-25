@@ -328,7 +328,9 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                 jt_pesoActual.setText(Double.toString(visita.getPeso_actual()));
                 double prom=visitasData.PromediarPeso(visita.getMascota());
                 visita.setPeso_promedio(prom);
-                jt_pesoPromedio.setText(Double.toString(visita.getPeso_promedio()));}
+                jt_pesoPromedio.setText(Double.toString(visita.getPeso_promedio()));
+                visita.getMascota().setPeso_actual(visita.getPeso_actual());
+                visita.getMascota().setPeso_promedio(prom);}
              else
              {
              JOptionPane.showMessageDialog(null, "No existe mascota con el ID ingresado.");    
