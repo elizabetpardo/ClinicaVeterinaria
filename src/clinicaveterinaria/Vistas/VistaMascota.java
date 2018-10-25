@@ -428,7 +428,7 @@ private MascotaData MascotaData;
             String raza=jt_raza.getText();
             String color_pelo=jtf_Mascota_Pelo.getText();            
             
-            LocalDate fecha_nac = null;
+            LocalDate fecha_nac;
             try{
                 fecha_nac = LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }
@@ -438,8 +438,9 @@ private MascotaData MascotaData;
             }            
             
             Double peso_actual=Double.parseDouble(jtf_Mascota_PesoActual.getText());
+            Double peso_promedio=peso_actual;
          
-            Mascota mascota= new Mascota(cliente,codigo,alias,sexo, especie, raza, color_pelo,fecha_nac,peso_actual);            
+            Mascota mascota= new Mascota(cliente,codigo,alias,sexo, especie, raza, color_pelo,fecha_nac,peso_actual,peso_promedio);            
             MascotaData.guardarMascota(mascota);
             jt_idMascota.setText(mascota.getId_mascota()+"");
             jtf_Mascota_PesoPromedio.setText(Double.toString(mascota.getPeso_promedio()));
@@ -579,7 +580,7 @@ private MascotaData MascotaData;
                 
             String raza=jt_raza.getText();
             String color_pelo=jtf_Mascota_Pelo.getText();
-            LocalDate fecha_nac = null;
+            LocalDate fecha_nac;
             try{
                 fecha_nac = LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }
@@ -588,6 +589,7 @@ private MascotaData MascotaData;
                return;
             }
             Double peso_actual=Double.parseDouble(jtf_Mascota_PesoActual.getText());
+            
             
             Mascota mascota= new Mascota(id_mascota,cliente,codigo,alias,sexo, especie, raza, color_pelo,fecha_nac,peso_actual);
             MascotaData.actualizarMascota(mascota);

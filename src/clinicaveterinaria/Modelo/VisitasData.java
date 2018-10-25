@@ -132,17 +132,35 @@ public class VisitasData {
         
         return visitas;
     }
-      public double PromediarPeso(Mascota mascota){
-          int cantVisitas=0;
-          int cant=0;
+      public double PromediarPeso(Mascota mascota, int actualizacion){
+          //int cantVisitas=0;
+         // int cant=0;
           double pesos = 0;
-          double promedio=0;
-          cantVisitas=obtenerVisitasXMascota(mascota.getId_mascota()).size();
-          List<VisitaDeAtencion> visitas = new ArrayList<VisitaDeAtencion>();
+          double promedio;
+          int cantVisitas=obtenerVisitasXMascota(mascota.getId_mascota()).size();
+          List<VisitaDeAtencion> visitas ;
           visitas=obtenerVisitasXMascota(mascota.getId_mascota());
           
-         
-             for(int i=0; i < cantVisitas ;i++){
+          if(cantVisitas == 0)
+                  promedio = mascota.getPeso_actual();
+          else{
+              for(int i=0; i < cantVisitas ;i++){
+                  
+              pesos+=visitas.get(i).getPeso_actual();
+                  
+          
+               }
+              
+              if(actualizacion == 0)
+                promedio= (pesos + mascota.getPeso_actual())/(cantVisitas+1) ;  // promedio para guardar
+              else
+                promedio= (pesos - visitas.get(cantVisitas-1).getPeso_actual() + mascota.getPeso_actual())/(cantVisitas) ; // promedio para actualizar
+              
+          }
+          
+          
+
+           /*  for(int i=0; i < cantVisitas ;i++){
              
                  if(visitas.get(i).getPeso_promedio()==0 && visitas.get(i).getPeso_actual()!=0)
                  {
@@ -155,7 +173,7 @@ public class VisitasData {
                    promedio=pesos/cant;
                  }
              
-             }
+             } */
           
         return promedio;
     } 

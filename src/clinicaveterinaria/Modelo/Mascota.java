@@ -46,7 +46,7 @@ public class Mascota {
         this.peso_actual = pesoActual;
     }
     
-    public Mascota(Cliente cliente, String codigo, String alias, String sexo, String especie, String raza,String colorpelo, LocalDate fecha_nac, double pesoActual) {
+    public Mascota(Cliente cliente, String codigo, String alias, String sexo, String especie, String raza,String colorpelo, LocalDate fecha_nac, double pesoActual, double pesoPromedio) {
         this.cliente = cliente;
         this.cod_mascota = codigo;
         this.alias = alias;
@@ -57,6 +57,7 @@ public class Mascota {
         this.fecha_nac = fecha_nac;
         this.peso_promedio = 0;
         this.peso_actual = pesoActual;
+        this.peso_promedio= pesoPromedio;
     }
   
     public int getId_mascota() {

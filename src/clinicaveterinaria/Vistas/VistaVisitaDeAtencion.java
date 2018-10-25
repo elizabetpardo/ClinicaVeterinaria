@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +40,7 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
               try {
         conexion = new Conexion("jdbc:mysql://localhost/clinicaveterinaria", "root", "");
         visitasData = new VisitasData(conexion);
+        mascotaData = new MascotaData(conexion);
         
     } catch (ClassNotFoundException ex) {
         Logger.getLogger(VistaVisitaDeAtencion.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,18 +97,54 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                 jt_idVisitaActionPerformed(evt);
             }
         });
+        jt_idVisita.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_idVisitaKeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("ID MASCOTA");
 
+        jt_idMascota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_idMascotaKeyTyped(evt);
+            }
+        });
+
         jLabel3.setText("ID TRATAMIENTO");
 
+        jt_idTratamiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_idTratamientoKeyTyped(evt);
+            }
+        });
+
         jl_fecha.setText("FECHA");
+
+        jt_fecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_fechaKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("DETALLE");
 
         jta_detalle.setColumns(20);
         jta_detalle.setRows(5);
+        jta_detalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jta_detalleKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(jta_detalle);
+
+        jt_pesoActual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jt_pesoActualKeyTyped(evt);
+            }
+        });
+
+        jt_pesoPromedio.setEnabled(false);
 
         jl_pesoActual.setText("PESO ACTUAL");
 
@@ -280,6 +318,7 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jt_idVisitaActionPerformed
 
     private void jb_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_limpiarActionPerformed
+        jt_idVisita.setEnabled(true);
         jt_idVisita.setText("");
         jt_idMascota.setText("");
         jt_idTratamiento.setText("");
@@ -315,8 +354,8 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
             
            int id=Integer.parseInt(jt_idVisita.getText());
            VisitaDeAtencion visita=visitasData.buscarVisita(id);
+           if(visita!=null){
             
-            if(visita.getMascota() != null && visita.getTratamiento() != null){
         
                 jt_idVisita.setText(visita.getId_visita()+"");
                 jt_idMascota.setText(visita.getMascota().getId_mascota()+"");
@@ -326,26 +365,26 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                 jt_fecha.setText(fecha);
                 jta_detalle.setText(visita.getDetalle());
                 jt_pesoActual.setText(Double.toString(visita.getPeso_actual()));
-                double prom=visitasData.PromediarPeso(visita.getMascota());
-                visita.setPeso_promedio(prom);
+                //double prom=visitasData.PromediarPeso(visita.getMascota());
+                //visita.setPeso_promedio(prom);
                 jt_pesoPromedio.setText(Double.toString(visita.getPeso_promedio()));
-                visita.getMascota().setPeso_actual(visita.getPeso_actual());
-                visita.getMascota().setPeso_promedio(prom);}
-             else
-             {
-             JOptionPane.showMessageDialog(null, "No existe mascota con el ID ingresado.");    
-              jt_idMascota.setText("");
-              }
+                //visita.getMascota().setPeso_actual(visita.getPeso_actual());
+                //visita.getMascota().setPeso_promedio(prom);
+                jt_idVisita.setEnabled(false);
+                
                 
     }//GEN-LAST:event_jb_buscarActionPerformed
-
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Ingrese el ID de la mascota.");
-        }
-    
+    else{
+            JOptionPane.showMessageDialog(null, "No existe visita con el ID ingresado.");    
+            jt_idVisita.setText("");
+            }
     
     }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Ingrese el ID de la visita.");
+        }  
+    }       
     private void jb_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_guardarActionPerformed
                   
       
@@ -354,59 +393,185 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
       
         int idTratamiento=Integer.parseInt(jt_idTratamiento.getText());
         Tratamiento tratamiento = visitasData.buscarTratamiento(idTratamiento);
-          if(mascota != null && tratamiento != null)
-        {
-          LocalDate fecha= LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        
+        if(mascota != null){
+        if(tratamiento != null){   
+         
+         LocalDate fecha;
+         try{
+               fecha=LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            }
+         catch(DateTimeParseException ex){
+               JOptionPane.showMessageDialog(null, "Fecha incorrecta");
+               return;
+            }
+         
+         
          String detalle=jta_detalle.getText();
          double pesoActual=Double.parseDouble(jt_pesoActual.getText());
          mascota.setPeso_actual(pesoActual);
         
    
-         double pesoPromedio=mascota.getPeso_promedio();
-          jt_pesoPromedio.setText(Double.toString(pesoPromedio));
-         visitasData.PromediarPeso(mascota);
+        // double pesoPromedio=mascota.getPeso_promedio();
+        //  jt_pesoPromedio.setText(Double.toString(pesoPromedio));
+        // visitasData.PromediarPeso(mascota);
         
-         VisitaDeAtencion visita= new VisitaDeAtencion(mascota,tratamiento,fecha,detalle,pesoActual,pesoPromedio);
+        double pesoPromedio = visitasData.PromediarPeso(mascota,0);
+        mascota.setPeso_promedio(pesoPromedio);
+        
+        mascotaData.actualizarMascota(mascota);
+        
+        VisitaDeAtencion visita= new VisitaDeAtencion(mascota,tratamiento,fecha,detalle,pesoActual,pesoPromedio);
          
          visitasData.guardarVisita(visita);
          jt_idVisita.setText(visita.getId_visita()+"");
-         jb_buscarActionPerformed(evt);
+        jt_pesoPromedio.setText(visita.getPeso_promedio()+"");
+        jt_idVisita.setEnabled(false);
+        
          JOptionPane.showMessageDialog(null, "Guardado exitoso.");
+        }
+        else
+           JOptionPane.showMessageDialog(null, "El ID del tratamiento no existe. ");
+          
+          
          }
           else
-          {
-           JOptionPane.showMessageDialog(null, "Error al guardar visita de atención.");
-          }
+            JOptionPane.showMessageDialog(null, "El ID de la mascota no existe. ");
+          
     }//GEN-LAST:event_jb_guardarActionPerformed
 
     private void jb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarActionPerformed
        
-       if (jt_idVisita.getText()!=null){
+       
            
            int idMascota=Integer.parseInt(jt_idMascota.getText());
             Mascota mascota = visitasData.buscarMascota(idMascota);
           
            int idTratamiento=Integer.parseInt(jt_idTratamiento.getText());
              Tratamiento tratamiento = visitasData.buscarTratamiento(idTratamiento);
-           
-           LocalDate fecha=LocalDate.parse(jt_fecha.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-           String detalle=jta_detalle.getText();
-           
-          double pesoActual=Double.parseDouble(jt_pesoActual.getText());
-          mascota.setPeso_actual(pesoActual);
+             
+           if(mascota != null){
+            if(tratamiento != null){  
+                
+            
+           LocalDate fecha;
+             try{
+           fecha=LocalDate.parse(jt_fecha.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+           }
+            catch(DateTimeParseException ex){
+               JOptionPane.showMessageDialog(null, "Fecha incorrecta");
+               return;
+            }
+             
+           String detalle=jta_detalle.getText();          
+           double pesoActual=Double.parseDouble(jt_pesoActual.getText());
+           mascota.setPeso_actual(pesoActual);
           
-          double pesoPromedio=mascota.getPeso_promedio();
-         jt_pesoPromedio.setText(Double.toString(pesoPromedio));
-           
-        VisitaDeAtencion visita=new VisitaDeAtencion(Integer.parseInt(jt_idVisita.getText()),mascota,tratamiento,fecha,detalle,pesoActual,pesoPromedio);
-             visitasData.actualizarVisita(visita);
-        JOptionPane.showMessageDialog(null, "Actualizacion exitosa.");
+          //double pesoPromedio=mascota.getPeso_promedio();
+          //jt_pesoPromedio.setText(Double.toString(pesoPromedio));
+          
+            double pesoPromedio = visitasData.PromediarPeso(mascota,1);
+            mascota.setPeso_promedio(pesoPromedio);
+        
+            mascotaData.actualizarMascota(mascota);
+            
+            VisitaDeAtencion visita=new VisitaDeAtencion(Integer.parseInt(jt_idVisita.getText()),mascota,tratamiento,fecha,detalle,pesoActual,pesoPromedio);
+            visitasData.actualizarVisita(visita);
+            
+            jt_pesoPromedio.setText(visita.getPeso_promedio()+"");
+            
+            JOptionPane.showMessageDialog(null, "Actualizacion exitosa.");
+        }
+        else
+           JOptionPane.showMessageDialog(null, "El ID del tratamiento no existe. ");
+          
+          
+         }
+          else
+            JOptionPane.showMessageDialog(null, "El ID de la mascota no existe. ");
+          
+    
     }//GEN-LAST:event_jb_modificarActionPerformed
-       else
-       {
-          JOptionPane.showMessageDialog(null, "No se pudo actualizar la visita.");
-       }
-    }
+
+    private void jt_idVisitaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_idVisitaKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_idVisitaKeyTyped
+
+    private void jt_idMascotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_idMascotaKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='\u0008') { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese un entero."); 
+               
+          } 
+    }//GEN-LAST:event_jt_idMascotaKeyTyped
+
+    private void jt_idTratamientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_idTratamientoKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='\u0008') { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese un entero."); 
+               
+          } 
+    }//GEN-LAST:event_jt_idTratamientoKeyTyped
+
+    private void jt_fechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_fechaKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c) && c!='/' && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo digitos."); 
+               
+          }
+    }//GEN-LAST:event_jt_fechaKeyTyped
+
+    private void jta_detalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jta_detalleKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jta_detalleKeyTyped
+
+    private void jt_pesoActualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_pesoActualKeyTyped
+        char c=evt.getKeyChar(); 
+        
+       
+        
+          if(!Character.isDigit(c) && (c!='.' || jt_pesoActual.getText().contains(".")) && c!='\u0008') {
+              
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo numeros decimales."); 
+               
+          }
+    }//GEN-LAST:event_jt_pesoActualKeyTyped
+       
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

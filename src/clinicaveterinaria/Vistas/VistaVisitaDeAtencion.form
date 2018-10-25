@@ -197,6 +197,7 @@
         <Component class="javax.swing.JTextField" name="jt_idVisita">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jt_idVisitaActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_idVisitaKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -205,6 +206,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_idMascota">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_idMascotaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -212,6 +216,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_idTratamiento">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_idTratamientoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_fecha">
           <Properties>
@@ -219,6 +226,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_fecha">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_fechaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -237,12 +247,21 @@
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jta_detalleKeyTyped"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="jt_pesoActual">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jt_pesoActualKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_pesoPromedio">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jl_pesoActual">
           <Properties>
