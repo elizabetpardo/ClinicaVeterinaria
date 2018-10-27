@@ -5,17 +5,34 @@
  */
 package clinicaveterinaria.vistas;
 
+import clinicaveterinaria.Modelo.Conexion;
+import clinicaveterinaria.Modelo.MascotaData;
+import clinicaveterinaria.Modelo.VisitaDeAtencion;
+import clinicaveterinaria.Modelo.VisitasData;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author elinote
  */
 public class VistaVisitas extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form VistaVisitas
-     */
+    private VisitasData visitasData;
+    private Conexion conexion;
+    
+    
     public VistaVisitas() {
         initComponents();
+        try {
+        conexion = new Conexion("jdbc:mysql://localhost/clinicaveterinaria", "root", "");
+        visitasData = new VisitasData(conexion);
+        
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(ListadoTratamientosActivos.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     /**
@@ -45,16 +62,21 @@ public class VistaVisitas extends javax.swing.JInternalFrame {
         jl_idMascota.setText("ID MASCOTA");
 
         jb_buscar.setText("Buscar");
+        jb_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_buscarActionPerformed(evt);
+            }
+        });
 
         jt_visitaXmascota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id_visita", "id_Mascota", "id_tratamiento", "Fecha", "Detalle"
             }
         ));
         jScrollPane1.setViewportView(jt_visitaXmascota);
@@ -99,6 +121,39 @@ public class VistaVisitas extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jb_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarActionPerformed
+         {                                          
+        List<VisitaDeAtencion> visitas = new ArrayList<>();
+        if(!jl_idMascota.getText().equals("")){
+            if(visitasData.buscarVisita(Integer.parseInt(jl_idMascota.getText())) != null){
+                
+                visitas = visitasData.obtenerVisitasXMascota(Integer.parseInt(jl_idMascota.getText()));     
+            
+                if(!visitas.isEmpty()){
+                int a= visitas.size();
+                    for(int i=0;i<a;i++){
+
+                   jt_visitaXmascota.setValueAt(visitas.get(i).getId_visita(), i, 0);
+                    jt_visitaXmascota.setValueAt(visitas.get(i).getMascota(), i, 1);
+                    jt_visitaXmascota.setValueAt(visitas.get(i).getTratamiento(), i, 2);
+                    jt_visitaXmascota.setValueAt(visitas.get(i).getFecha(), i, 3);
+                    jt_visitaXmascota.setValueAt(visitas.get(i).getDetalle(), i, 4);
+
+
+                }
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "El cliente no tiene mascotas.");
+            }
+            else
+                JOptionPane.showMessageDialog(null, "El cliente no existe.");
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Ingrese el ID del cliente a buscar.");
+            
+    }
+    }//GEN-LAST:event_jb_buscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

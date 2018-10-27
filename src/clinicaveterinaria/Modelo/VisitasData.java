@@ -178,7 +178,7 @@ public class VisitasData {
         return promedio;
     } 
     
-   /*   public List<VisitaDeAtencion> obtenerVisitasMismoTratamiento(int tipo){
+   /*  public List<VisitaDeAtencion> obtenerVisitasMismoTratamiento(int tipo){
             List<VisitaDeAtencion> visitas = new ArrayList<VisitaDeAtencion>();
             
          try {
@@ -293,8 +293,11 @@ public class VisitasData {
             System.out.println("Error al buscar una visita: " + ex.getMessage());
         }
         
-    return visita;     
+    return visita;
 }
+      
+
+      
       public Mascota buscarMascota(int id){
     
         MascotaData m=new MascotaData(conexion);
