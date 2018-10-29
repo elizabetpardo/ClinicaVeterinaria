@@ -128,12 +128,39 @@ public class ListadoTratamientosActivos extends javax.swing.JInternalFrame {
     private void jb_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_BuscarActionPerformed
         List<Tratamiento> tratamientos = new ArrayList<>();
         tratamientos = tratamientoData.listarTratamientosActivos();
+        String tipo;
 
         for(int i=0;i<tratamientos.size();i++){
+            
+            switch (tratamientos.get(i).getTipo()) {
+
+            case 0:
+                   tipo="VACUNACIÓN";
+                   break;
+            case 1:
+                  tipo="ENFERMEDAD";
+                  break;
+            case 2:
+                  tipo="CURACIONES";
+                  break;
+            case 3:
+                  tipo="BAÑO Y CORTE DE PELO";
+                  break;
+            case 4:
+                  tipo="CASTRACIÓN";
+                  break;
+            case 5:
+                  tipo="OTROS";
+                  break;
+           default:
+                   tipo="OTROS";
+           break;}
+
+ 
 
             jTabla.setValueAt(tratamientos.get(i).getId_tratamiento(), i, 0);
             jTabla.setValueAt(tratamientos.get(i).getCod_tratamiento(), i, 1);
-            jTabla.setValueAt(tratamientos.get(i).getTipo(), i, 2);
+            jTabla.setValueAt(tipo,i, 2);
             jTabla.setValueAt(tratamientos.get(i).getDescripcion(), i, 3);
             jTabla.setValueAt(tratamientos.get(i).getImporte(), i, 4);
 
