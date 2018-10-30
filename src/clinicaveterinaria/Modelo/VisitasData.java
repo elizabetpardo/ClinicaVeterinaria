@@ -178,23 +178,32 @@ public class VisitasData {
         return promedio;
     } 
     
-   /*  public List<VisitaDeAtencion> obtenerVisitasMismoTratamiento(int tipo){
+     public List<VisitaDeAtencion> obtenerVisitasMismoTratamiento(int tipo){
             List<VisitaDeAtencion> visitas = new ArrayList<VisitaDeAtencion>();
             
-         try {
-            String sql = "SELECT* FROM visitadeatencion, tratamiento"
-                    + " WHERE tratamiento.tipo = materia.id\n" +
-                         "and cursada.idAlumno = ?;";
-            PreparedStatement statement = connection.prepareStatement(sql);
+        try {
+            String sql = "SELECT * FROM visitadeatencion,tratamiento,mascota WHERE tipo= ? AND tratamiento.id_tratamiento = mascota.id_tratamiento AND visitadeatencion.id_mascota = mascota.id_mascota;";
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, tipo);
             ResultSet resultSet = statement.executeQuery();
             VisitaDeAtencion visita;
             while(resultSet.next()){
                 visita = new VisitaDeAtencion();
-                visita.getMascota(resultSet.getInt("id_mascota"));
-                visita.setNombre(resultSet.getString("nombre"));
+                visita.setId_visita(resultSet.getInt("id_visita"));
+                
+                Tratamiento t=buscarTratamiento(resultSet.getInt("id_tratamiento"));
+                visita.setTratamiento(t);
+                
+                Mascota m=buscarMascota(resultSet.getInt("id_mascota"));
+                visita.setMascota(m);
+                
+                visita.setFecha(resultSet.getDate("fecha").toLocalDate());
+                visita.setDetalle(resultSet.getString("detalle"));
+                visita.setPeso_actual(resultSet.getDouble("peso_actual"));
+                visita.setPeso_promedio(resultSet.getDouble("peso_promedio"));
                 visitas.add(visita);
-            }      
+            }
+
             statement.close();
         } catch (SQLException ex) {
             System.out.println("Error al obtener los alumnos: " + ex.getMessage());
@@ -203,7 +212,7 @@ public class VisitasData {
         
         return visitas;
       
-    }*/
+    }
     
       
       public void borrarVisita(int id){
