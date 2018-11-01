@@ -111,6 +111,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_visitasMascotaActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmi_visistasxtratamiento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Visitas por Tratamiento"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_visistasxtratamientoActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmi_formularioVisitas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Formulario de Visitas de atenci&#xf3;n"/>
