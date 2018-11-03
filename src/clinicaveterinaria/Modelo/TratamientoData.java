@@ -112,7 +112,7 @@ public class TratamientoData {
     
         } catch (SQLException ex) {
             System.out.println("Error al eliminar un tratamiento: " + ex.getMessage());
-        }
+        } 
         
     
     }

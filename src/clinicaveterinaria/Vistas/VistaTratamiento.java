@@ -341,7 +341,7 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
         }
         else
             JOptionPane.showMessageDialog(null, "El tratamiento no existe.");
-        }       
+        }      
     }//GEN-LAST:event_jb_BorrarActionPerformed
 
     private void jcbx_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbx_tipoActionPerformed
