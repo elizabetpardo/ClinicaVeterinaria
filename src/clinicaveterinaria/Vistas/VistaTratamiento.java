@@ -331,14 +331,17 @@ public class VistaTratamiento extends javax.swing.JInternalFrame {
     private void jb_BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_BorrarActionPerformed
         int id=Integer.parseInt(jt_idTratamiento.getText());
         
-        if(tratamientoData.buscarTratamiento(id) != null){
+        int resp = JOptionPane.showConfirmDialog(null, "Tambien se eliminaran las VISITAS relacionados a este Tratamiento. ¿Está seguro?");
+        if(resp == 0){
+        
+            if(tratamientoData.buscarTratamiento(id) != null){
             tratamientoData.borrarTratamiento(id);
             JOptionPane.showMessageDialog(null, "Borrado exitoso.");
             jb_limpiarActionPerformed(evt);
         }
         else
             JOptionPane.showMessageDialog(null, "El tratamiento no existe.");
-            
+        }       
     }//GEN-LAST:event_jb_BorrarActionPerformed
 
     private void jcbx_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbx_tipoActionPerformed

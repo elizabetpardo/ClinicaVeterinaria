@@ -91,7 +91,15 @@ public class TratamientoData {
     }
     
     public void borrarTratamiento(int id){
-    try {
+     try{
+            String sql2 = "DELETE FROM visitadeatencion WHERE id_tratamiento = ?;";
+            
+            PreparedStatement statement2 = connection.prepareStatement(sql2, Statement.RETURN_GENERATED_KEYS);
+            statement2.setInt(1, id);
+            
+            statement2.executeUpdate();
+            
+            statement2.close();
             
             String sql = "DELETE FROM tratamiento WHERE id_tratamiento =?;";
 
