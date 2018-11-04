@@ -159,22 +159,6 @@ public class VisitasData {
           }
           
           
-
-           /*  for(int i=0; i < cantVisitas ;i++){
-             
-                 if(visitas.get(i).getPeso_promedio()==0 && visitas.get(i).getPeso_actual()!=0)
-                 {
-                     promedio=visitas.get(i).getPeso_actual();
-                 }
-                 else
-                 {
-                   pesos+=visitas.get(i).getPeso_actual();
-                   cant+=1;
-                   promedio=pesos/cant;
-                 }
-             
-             } */
-          
         return promedio;
     } 
     
@@ -182,7 +166,7 @@ public class VisitasData {
             List<VisitaDeAtencion> visitas = new ArrayList<VisitaDeAtencion>();
             
         try {
-            String sql = "SELECT * FROM visitadeatencion,tratamiento,mascota WHERE tipo= ? AND tratamiento.id_tratamiento = mascota.id_tratamiento AND visitadeatencion.id_mascota = mascota.id_mascota;";
+            String sql = "SELECT * FROM visitadeatencion,tratamiento WHERE tipo= ? AND tratamiento.id_tratamiento = visitadeatencion.id_tratamiento;";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, tipo);
             ResultSet resultSet = statement.executeQuery();
@@ -206,7 +190,7 @@ public class VisitasData {
 
             statement.close();
         } catch (SQLException ex) {
-            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+            System.out.println("Error al obtener las visitas: " + ex.getMessage());
         }
         
         

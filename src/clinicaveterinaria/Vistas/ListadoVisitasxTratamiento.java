@@ -58,7 +58,7 @@ public class ListadoVisitasxTratamiento extends javax.swing.JInternalFrame {
         setResizable(true);
 
         jl_LMXT.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jl_LMXT.setText("LISTADO DE MASCOTA POR TRATAMIENTO");
+        jl_LMXT.setText("LISTADO DE VISITAS POR TRATAMIENTO");
 
         jl_LMXT_Tratamiento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jl_LMXT_Tratamiento.setText("TRATAMIENTOS");
@@ -138,7 +138,7 @@ public class ListadoVisitasxTratamiento extends javax.swing.JInternalFrame {
         List<VisitaDeAtencion> visitas = new ArrayList<>();
         //limpiar tabla
         for(int i=0;i<15;i++)
-            for(int j=0;j<10;j++)
+            for(int j=0;j<7;j++)
                 jTable1.setValueAt("",i,j);
                  
             
@@ -151,8 +151,8 @@ public class ListadoVisitasxTratamiento extends javax.swing.JInternalFrame {
                     for(int i=0;i<visitas.size();i++){
 
                         jTable1.setValueAt(visitas.get(i).getId_visita(), i, 0);
-                        jTable1.setValueAt(visitas.get(i).getMascota(), i, 1);
-                        jTable1.setValueAt(visitas.get(i).getTratamiento(), i, 2);
+                        jTable1.setValueAt(visitas.get(i).getMascota().getId_mascota(), i, 1);
+                        jTable1.setValueAt(visitas.get(i).getTratamiento().getId_tratamiento(), i, 2);
                         jTable1.setValueAt(visitas.get(i).getFecha(), i, 3);
                         jTable1.setValueAt(visitas.get(i).getDetalle(), i, 4);
                         jTable1.setValueAt(visitas.get(i).getPeso_actual(), i, 5);

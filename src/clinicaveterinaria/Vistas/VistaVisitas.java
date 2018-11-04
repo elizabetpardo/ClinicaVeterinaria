@@ -125,18 +125,17 @@ public class VistaVisitas extends javax.swing.JInternalFrame {
     private void jb_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarActionPerformed
          {                                          
         List<VisitaDeAtencion> visitas = new ArrayList<>();
-        if(!jl_idMascota.getText().equals("")){
-            if(visitasData.buscarVisita(Integer.parseInt(jl_idMascota.getText())) != null){
+        if(!jt_idMascota.getText().equals("")){
                 
-                visitas = visitasData.obtenerVisitasXMascota(Integer.parseInt(jl_idMascota.getText()));     
+                visitas = visitasData.obtenerVisitasXMascota(Integer.parseInt(jt_idMascota.getText()));     
             
                 if(!visitas.isEmpty()){
                 int a= visitas.size();
                     for(int i=0;i<a;i++){
 
                    jt_visitaXmascota.setValueAt(visitas.get(i).getId_visita(), i, 0);
-                    jt_visitaXmascota.setValueAt(visitas.get(i).getMascota(), i, 1);
-                    jt_visitaXmascota.setValueAt(visitas.get(i).getTratamiento(), i, 2);
+                    jt_visitaXmascota.setValueAt(visitas.get(i).getMascota().getId_mascota(), i, 1);
+                    jt_visitaXmascota.setValueAt(visitas.get(i).getTratamiento().getId_tratamiento(), i, 2);
                     jt_visitaXmascota.setValueAt(visitas.get(i).getFecha(), i, 3);
                     jt_visitaXmascota.setValueAt(visitas.get(i).getDetalle(), i, 4);
 
@@ -144,10 +143,8 @@ public class VistaVisitas extends javax.swing.JInternalFrame {
                 }
                 }
                 else
-                    JOptionPane.showMessageDialog(null, "El cliente no tiene mascotas.");
-            }
-            else
-                JOptionPane.showMessageDialog(null, "El cliente no existe.");
+                    JOptionPane.showMessageDialog(null, "La mascota no tiene visitas.");
+       
         }
         else
             JOptionPane.showMessageDialog(null, "Ingrese el ID del cliente a buscar.");
