@@ -5,6 +5,7 @@
  */
 package clinicaveterinaria.vistas;
 
+import java.beans.PropertyVetoException;
 import javax.swing.JFrame;
 
 /**
@@ -32,6 +33,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         escritorio = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jm_Clinica = new javax.swing.JMenuBar();
         jm_P_Archivo = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -54,18 +56,23 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         escritorio.setBackground(new java.awt.Color(51, 255, 255));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\elinote\\Downloads\\purr-fect (1).jpg")); // NOI18N
+
+        escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jm_Clinica.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Clinica Veterinaria", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 18), new java.awt.Color(255, 0, 0))); // NOI18N
+        jm_Clinica.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Clinica Veterinaria", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        jm_Clinica.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jm_P_Archivo.setText("Archivo");
 
@@ -193,7 +200,12 @@ escritorio.repaint();
 VistaCliente vm= new VistaCliente();
 vm.setVisible(true);
 escritorio.add(vm);
-escritorio.moveToFront(vm);        // TODO add your handling code here:
+escritorio.moveToFront(vm);  
+try {
+      vm.setMaximum(true);
+
+   } catch(PropertyVetoException e) {} 
+
     }//GEN-LAST:event_jmi_P_RegistrarClienteActionPerformed
 
     private void jmi_Principal_ListadoMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_Principal_ListadoMascotaActionPerformed
@@ -202,7 +214,12 @@ escritorio.repaint();
 ListadoMascotaxTratamiento vm= new ListadoMascotaxTratamiento();
 vm.setVisible(true);
 escritorio.add(vm);
-escritorio.moveToFront(vm);    // TODO add your handling code here:
+escritorio.moveToFront(vm);   
+ try {
+      vm.setMaximum(true);
+
+   } catch(PropertyVetoException e) {} 
+
     }//GEN-LAST:event_jmi_Principal_ListadoMascotaActionPerformed
 
     private void jmi_formuarioMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_formuarioMascotaActionPerformed
@@ -212,6 +229,11 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
       vm.setVisible(true);
       escritorio.add(vm);
       escritorio.moveToFront(vm); 
+      try {
+      vm.setMaximum(true);
+
+   } catch(PropertyVetoException e) {} 
+
     }//GEN-LAST:event_jmi_formuarioMascotaActionPerformed
 
     private void jmi_visitasMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_visitasMascotaActionPerformed
@@ -221,6 +243,11 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
       vm.setVisible(true);
       escritorio.add(vm);
       escritorio.moveToFront(vm);
+       try {
+      vm.setMaximum(true);
+
+   } catch(PropertyVetoException e) {} 
+
     }//GEN-LAST:event_jmi_visitasMascotaActionPerformed
 
     private void jmi_fomularioTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_fomularioTratamientoActionPerformed
@@ -230,6 +257,11 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
       vm.setVisible(true);
       escritorio.add(vm);
       escritorio.moveToFront(vm);
+       try {
+      vm.setMaximum(true);
+
+   } catch(PropertyVetoException e) {} 
+
     }//GEN-LAST:event_jmi_fomularioTratamientoActionPerformed
 
     private void jmi_mascotasXclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mascotasXclienteActionPerformed
@@ -239,6 +271,11 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
       vm.setVisible(true);
       escritorio.add(vm);
       escritorio.moveToFront(vm);
+       try {
+      vm.setMaximum(true);
+
+   } catch(PropertyVetoException e) {} 
+
     }//GEN-LAST:event_jmi_mascotasXclienteActionPerformed
 
     private void jmi_formularioVisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_formularioVisitasActionPerformed
@@ -247,7 +284,12 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
       VistaVisitaDeAtencion vm= new VistaVisitaDeAtencion();
       vm.setVisible(true);
       escritorio.add(vm);
-      escritorio.moveToFront(vm);       
+      escritorio.moveToFront(vm);
+       try {
+      vm.setMaximum(true);
+
+   } catch(PropertyVetoException e) {} 
+
     }//GEN-LAST:event_jmi_formularioVisitasActionPerformed
 
     private void jmi_listadoTratamientosActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listadoTratamientosActivosActionPerformed
@@ -257,6 +299,11 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
       lta.setVisible(true);
       escritorio.add(lta);
       escritorio.moveToFront(lta); 
+       try {
+      lta.setMaximum(true);
+
+   } catch(PropertyVetoException e) {} 
+
     }//GEN-LAST:event_jmi_listadoTratamientosActivosActionPerformed
 
     private void jmi_visistasxtratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_visistasxtratamientoActionPerformed
@@ -266,6 +313,11 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
       lvt.setVisible(true);
       escritorio.add(lvt);
       escritorio.moveToFront(lvt); 
+       try {
+      lvt.setMaximum(true);
+
+   } catch(PropertyVetoException e) {} 
+
     }//GEN-LAST:event_jmi_visistasxtratamientoActionPerformed
 
     /**
@@ -284,28 +336,24 @@ escritorio.moveToFront(vm);    // TODO add your handling code here:
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new VistaPrincipal().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar jm_Clinica;
     private javax.swing.JMenu jm_P_Archivo;
