@@ -76,7 +76,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmi_Principal_ListadoMascota">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listado de mascotas"/>
+                <Property name="text" type="java.lang.String" value="Listado de mascotas por tratamiento"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_Principal_ListadoMascotaActionPerformed"/>
@@ -191,11 +191,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\elinote\Downloads\purr-fect (1).jpg"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

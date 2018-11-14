@@ -544,7 +544,7 @@ private MascotaData MascotaData;
                 fecha_nac = LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }
             catch(DateTimeParseException ex){
-               JOptionPane.showMessageDialog(null, "Fecha incorrecta");
+               JOptionPane.showMessageDialog(null, "Fecha incorrecta. Formato: dd/MM/aaaa");
                return;
             }            
             
@@ -696,7 +696,7 @@ private MascotaData MascotaData;
                 fecha_nac = LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }
             catch(DateTimeParseException ex){
-               JOptionPane.showMessageDialog(null, "Fecha incorrecta");
+               JOptionPane.showMessageDialog(null, "Fecha incorrecta. Formato: dd/MM/aaaa");
                return;
             }
             Double peso_actual=Double.parseDouble(jtf_Mascota_PesoActual.getText());

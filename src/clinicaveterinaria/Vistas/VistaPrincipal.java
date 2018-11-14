@@ -56,8 +56,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         escritorio.setBackground(new java.awt.Color(51, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\elinote\\Downloads\\purr-fect (1).jpg")); // NOI18N
-
         escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
@@ -120,7 +118,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jm_P_Tratamientos.setText("Tratamientos");
 
-        jmi_Principal_ListadoMascota.setText("Listado de mascotas");
+        jmi_Principal_ListadoMascota.setText("Listado de mascotas por tratamiento");
         jmi_Principal_ListadoMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmi_Principal_ListadoMascotaActionPerformed(evt);

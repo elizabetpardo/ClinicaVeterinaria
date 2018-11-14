@@ -181,6 +181,11 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 19, 0, 0);
         jPanel1.add(jl_fecha, gridBagConstraints);
 
+        jt_fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_fechaActionPerformed(evt);
+            }
+        });
         jt_fecha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jt_fechaKeyTyped(evt);
@@ -367,16 +372,16 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
                 .addGap(54, 54, 54))
         );
 
@@ -472,7 +477,7 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                fecha=LocalDate.parse(jt_fecha.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             }
          catch(DateTimeParseException ex){
-               JOptionPane.showMessageDialog(null, "Fecha incorrecta");
+               JOptionPane.showMessageDialog(null, "Fecha incorrecta. Formato: dd/MM/aaaa");
                return;
             }
          
@@ -529,7 +534,7 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
            fecha=LocalDate.parse(jt_fecha.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
            }
             catch(DateTimeParseException ex){
-               JOptionPane.showMessageDialog(null, "Fecha incorrecta");
+               JOptionPane.showMessageDialog(null, "Fecha incorrecta. Formato: dd/MM/aaaa");
                return;
             }
              
@@ -640,6 +645,10 @@ public class VistaVisitaDeAtencion extends javax.swing.JInternalFrame {
                
           }
     }//GEN-LAST:event_jt_pesoActualKeyTyped
+
+    private void jt_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_fechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_fechaActionPerformed
        
     
 

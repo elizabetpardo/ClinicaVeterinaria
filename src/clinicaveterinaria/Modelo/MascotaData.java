@@ -259,7 +259,7 @@ public class MascotaData {
             
 
         try {
-            String sql = "SELECT * FROM mascota,tratamiento,visitadeatencion WHERE tipo= ? AND tratamiento.id_tratamiento = visitadeatencion.id_tratamiento AND mascota.id_mascota = visitadeatencion.id_mascota;";
+            String sql = "SELECT * FROM mascota,tratamiento,visitadeatencion WHERE tipo= ? AND tratamiento.id_tratamiento = visitadeatencion.id_tratamiento AND mascota.id_mascota = visitadeatencion.id_mascota ORDER BY visitadeatencion.id_visita DESC limit 1;";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, tipo);
             
